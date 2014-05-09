@@ -1,0 +1,412 @@
+/*
+ * Theme Name: gem
+ * Theme URI: http://2020creative.net
+ * Description: A simple responsive theme based on the Bootstrap framework.
+ * Version: 1.147
+ * Author: 2020 Creative, Inc.
+ * Author URI: http://2020creative.net
+ * Tags: gem
+ * License: GNU General Public License v2.0 & Apache License 2.0
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
+ * Bitbucket Theme URI: https://bitbucket.org/2020C/gem
+ * Bitbucket Branch: master
+*/
+
+/*
+colors
+@brand-primary  #428bca = #a50050 = gem1 - main pink
+@brand-success  #5cb85c = #00b2a9 = gem2 - teal accent
+@brand-info     #5bc0de = #b20056 = gem3 - dk pink
+@brand-warning  #f0ad4e = #f20075 = gem4 - lt pink (bright)
+@brand-danger   #d9534f = #650031 = gem5 - dk dk pink 
+
+Grays
+#2a2a2a - dk dk gray
+#555    - dk gray
+#808080 - md gray
+#ABABAB - lt gray
+#D5D5D5 - lt lt gray
+
+gray
+@gray-darker  = lighten(#000, 13.5%)
+@gray-dark    = lighten(#000, 20%)
+@gray         = lighten(#000, 33.5%)
+@gray-light   = lighten(#000, 60%)
+@gray-lighter = lighten(#000, 93.5%)
+*/
+
+/* HEADS UP: Everything that you will normally find here can be found in the library/less/wp.less */
+
+/* ////////////////////////////////////////////////button colors */
+.btn-color-gem1 {
+    color:white;
+    background-color:#f20075;
+}
+.btn-color-gem1:hover {
+    color:white;
+    background-color:#00b2a9;
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+}
+.header-container {
+    height:200px;
+    min-height:100px;
+    overflow:hidden;
+}
+@media (max-width: 767px) { /*open media*/
+.header-container {
+    height:100px;
+}
+
+} /*close media*/
+.logo {
+    width:50%;
+    height:20%;
+    max-width:600px;
+    background-color:transparent;
+    background-image:url(images/sprite-gem-3.png);
+    background-repeat:no-repeat;
+    background-position:0 0;
+    background-size:200%;
+    transform:rotate(-11deg);
+    -ms-transform:rotate(-11deg); /* IE 9 */
+    -webkit-transform:rotate(-11deg); /* Opera, Chrome, and Safari */
+    position:absolute;
+    z-index:1;
+    position:35% 0;
+    margin-left:10%;
+}
+.header {
+    height:400px;
+    width:120%;
+    background-color:#b20056;
+    background-position:0 -33px;
+    margin:1% 0;
+    transform:rotate(-11deg);
+    -ms-transform:rotate(-11deg); /* IE 9 */
+    -webkit-transform:rotate(-11deg); /* Opera, Chrome, and Safari */
+}
+@media (min-width: 900px) and (max-width: 1200px) { /*open media*/
+.header {
+    margin:2% 0;
+}
+}/*close media*/
+@media (min-width: 900px) and (max-width: 1000px) { /*open media*/
+.header {
+    margin:8% 0;
+}
+}/*close media*/
+@media (max-width: 899px) { /*open media*/
+.header {
+    margin:9% 0;
+}
+}/*close media*/
+.tagline-group {
+    color:white;
+    width:300px;
+    height:auto;
+    background-color:transparent;
+    margin:4% 0 0 57%;
+    transform:rotate(-11deg);
+    -ms-transform:rotate(-11deg); /* IE 9 */
+    -webkit-transform:rotate(-11deg); /* Opera, Chrome, and Safari */
+    position:relative;
+    z-index:2;
+    float:left;
+}
+.tagline {
+    width:74px;
+    padding:10px;
+    background-color:#00b2a9;
+    z-index:1;
+    
+}
+.tagline-2 {
+    width:106px;
+    padding:10px;
+    margin:-12px 0 0 55px;
+    background-color:#f20075;
+    z-index:3;
+}
+.tagline-3 {
+    width:93px;
+    padding:10px;
+    margin:-61px 0 0 144px;
+    background-color:#a50050;
+    z-index:2;
+}
+.navbar,
+.nav-container {
+    background-color:#f20075;
+    border-top:1px solid #a50050;
+}
+.navbar,
+.navbar-default .navbar-brand {
+    color:white;
+}
+.navbar-default .navbar-brand:hover {
+    color:#a50050;
+}
+.navbar-toggle .icon-bar {
+display: block;
+width: 22px;
+height: 2px;
+border-radius: 1px;
+}
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #a50050;
+}
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid red;
+  border-radius: 4px;
+}
+.nav > li > a {
+    color:white;
+}
+.nav > li > a:hover {
+    color:white;
+    background-color:#650031;
+}
+.container {
+    width:100%;
+    padding:0 10%;
+}
+#slider {
+    background-color:white;
+    height:264px;
+    overflow:hidden;
+}
+.slider-img {
+    height:264px;
+    background-color:transparent;
+    background-image:url(images/Lady-on-ipad.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    overflow:hidden;
+}
+.slider-info-container {
+    background-color:blue;
+    height:auto;
+    overflow:hidden;
+}
+.slider-info, slider-info-last {
+    color:#650031;
+    background-color:#D5D5D5;
+    padding:15px 0 0 80px;
+    height:88px;
+    border-bottom:1px solid #ABABAB;
+    background-image:url(images/icon-gem-pink-50x35-20.png);
+    background-repeat:no-repeat;
+    background-position:5% center;
+    overflow:hidden;
+}
+.slider-info h2 {
+    font-size:1.5em;
+}
+.slider-info h2, .slider-info p {
+    margin:3px 0;
+    padding:0;
+}
+.slider-info:hover {
+    color:white;
+    background-color:#00b2a9;
+    background-image:url(images/icon-gem-pink-50x35-100.png);
+}
+.slider-info-last {
+    border-bottom:0px solid red;
+  }
+@media (min-width: 1000px) and (max-width: 1200px) { /*open media*/
+.slider-info {
+    border-right:0px solid #ABABAB;
+  }
+
+} /*close media*/
+@media (max-width: 999px) {
+  .slider-info {
+    border-right:1px solid #ABABAB;
+  }
+.slider-info-last {
+    border-bottom:1px solid #ABABAB;
+  } 
+}
+@media (max-width: 767px) { /*open media*/
+.slider-info {
+    border-right:0px solid #ABABAB;
+  }
+} /*close media*/
+
+/*Party*/
+
+.party-title {
+    font-size:2.2em;
+    color:white;
+    padding-top:0.75em;
+    margin:0;
+}
+.party-header {
+    height:100px;
+    overflow:hidden;
+}
+.party-img {
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover !important;
+    background-color:#a50050 !important;
+}
+
+.content {
+    padding-top:11px;
+}
+.gem-icon-25 {
+    width:35px;
+    height:25px;
+    background-image:url(images/icon-gem-pink-25.png);
+    background-repeat:none;
+    float:left;
+    margin-right:8px;
+}
+#sidebar {
+    border-left:1px solid #D5D5D5;
+    padding:15px;
+}
+/*Videos*/
+#videos {
+    margin-top:22px;
+    height:175px;
+}
+.video-box {
+    background-image:url(images/video-fpo1.png);
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height:175px;
+    border-right:2px solid white;
+}
+.video-box:hover {
+    opacity: 0.80;
+    filter: alpha(opacity=80);
+}
+.video-box:last-child {
+    padding-right:0px;
+    border-right:0px solid white;
+}
+/*product-home*/
+
+#product-home {
+    margin-top:22px;
+    margin-bottom:22px;
+    height:120px;
+}
+.prod-box {
+    background-image:url(images/product-fpo1.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    min-height:120px;
+    background-position:center;
+}
+.prod-box:hover {
+    background-image:url(images/product-fpo1.png);
+    background-repeat:no-repeat;
+    background-size:contain;
+    min-height:120px;
+    
+}
+.prod-go {
+    background-color:transparent;
+    color:transparent;
+    width:100%;
+    height:120px;
+    text-align:center;
+    padding:25%;
+    content:"hello there";
+}
+.prod-go:hover {
+    display:block;
+    color:white;
+    background-color:#00b2a9;
+    opacity: 0.60;
+    filter: alpha(opacity=60);
+    border-radius:8px;
+    
+}
+
+/*Menus*/
+
+.menu-gem-rep-container {
+    padding:0;
+    margin:0;
+    border:0px solid red;
+}
+.menu-gem-rep-container .menu {
+    padding:0;
+    margin:0;
+    border:0px solid green;
+}
+.menu-gem-rep-container .menu li {
+    color:white;
+    margin-top:0.5em;
+    border:0px solid blue;
+    width:100%;
+}
+.menu-gem-rep-container .menu li a {
+    color:white;
+    text-decoration:none;
+}
+
+/*Homepage Section Links*/
+
+#section-links {
+    margin-top:22px;
+    padding:33px 0;
+    color:#808080;
+    height:200px;
+    background-color:#D5D5D5;
+}
+/*Footer*/
+
+#footer {
+    color:white;
+    background-color:#f20075;
+    height:150px;
+    margin:11px 0 33px 0;
+}
+.footer-gem {
+    height:150px;
+    background:url(images/icon-gem.svg) no-repeat center;
+    background-size:contain;
+}
+#footer p {
+    padding:15% 0;
+}
+
+/*Woocommerce*/
+
+.woocommerce .related ul li.product, .woocommerce .related ul.products li.product, .woocommerce .upsells.products ul li.product, .woocommerce .upsells.products ul.products li.product, .woocommerce-page .related ul li.product, .woocommerce-page .related ul.products li.product, .woocommerce-page .upsells.products ul li.product, .woocommerce-page .upsells.products ul.products li.product {
+    width:22%;
+}
+li.product a:hover,
+.product-meta a:hover {
+    color:#00b2a9;
+}
+.woocommerce #content input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce-page #content input.button.alt, .woocommerce-page #respond input#submit.alt, .woocommerce-page a.button.alt, .woocommerce-page button.button.alt, .woocommerce-page input.button.alt {
+background: #00b2a9;
+background: -webkit-gradient(linear,left top,left bottom,from(#00b2a9),to(#00b2a9));
+background: -webkit-linear-gradient(#00b2a9,#00b2a9);
+background: -moz-linear-gradient(center top,#ad74a2 0,#96588a 100%);
+background: -moz-gradient(center top,#00b2a9 0,#00b2a9 100%);
+border-color: #00b2a9;
+color: #fff;
+text-shadow: 0 -1px 0 rgba(0,0,0,.6);
+}
+
+
+
+
+
