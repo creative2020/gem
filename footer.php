@@ -11,7 +11,13 @@
             </div>
             <div class="col-md-6">
             
-                <p class="pull-right"><a href="http://2020creative.com" id="2020 Creative" title="website design">2020 Creative - v1.12</a></p>
+                <p class="pull-right"><a href="http://2020creative.com" id="2020 Creative" title="website design">2020 Creative</a>
+                <?php
+                    $my_theme = wp_get_theme();
+                    echo "v" . $my_theme->get( 'Version' );
+                ?>
+                
+                </p>
                  
             </div>
 			
