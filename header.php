@@ -52,9 +52,9 @@
                             
                             
                             <div class="tagline-group hidden-xs">
-                                <div class="tagline">My very</div>
-                                <div class="tagline-2">cool tagline</div>
-                                <div class="tagline-3">goes here</div>
+                                <div class="tagline">Earn an income</div>
+                                <div class="tagline-2">virtually</div>
+                                <div class="tagline-3">anywhere</div>
                             </div>
                             <div class="header col-md-12"></div>
                         </div>
