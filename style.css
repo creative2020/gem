@@ -119,14 +119,16 @@ gray
     padding:10px;
     background-color:#00b2a9;
     z-index:1;
+    text-align:center;
     
 }
 .tagline-2 {
     width:106px;
     padding:10px;
-    margin:-12px 0 0 55px;
+    margin:-10px 0 0 55px;
     background-color:#f20075;
     z-index:3;
+    text-align:center;
 }
 .tagline-3 {
     width:93px;
@@ -134,6 +136,7 @@ gray
     margin:-61px 0 0 144px;
     background-color:#a50050;
     z-index:2;
+    text-align:center;
 }
 .navbar,
 .nav-container {

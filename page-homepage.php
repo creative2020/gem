@@ -14,20 +14,20 @@ Template Name: Homepage
         
             <div class="col-sm-12 col-md-4 slider-info-container">
                 <div class="row">
-                    <a href="/gem-registration/">
+                    <a href="/find-a-gem/">
                         <div class="col-sm-4 col-md-12 slider-info">
-                            <h2>Beocme a GEM</h2>
-                            <p>Earn an income</p>
+                            <h2>Find a Gem near you</h2>
+                            <p>Shop</p>
                         </div>
                     </a>
-                    <div class="col-sm-4 col-md-12 slider-info">
-                        <h2>Host a Party</h2>
-                        <p>Earn an income</p>
-                    </div>
-                    <div class="col-sm-4 col-md-12 slider-info slider-info-last">
-                        <h2>Shop Now</h2>
-                        <p>Earn an income</p>
-                    </div>
+                    <a href="/host-a-party/"><div class="col-sm-4 col-md-12 slider-info">
+                        <h2>Host a Virtual Party</h2>
+                        <p>Earn rewards</p>
+                    </div></a>
+                    <a href="/become-a-gem/"><div class="col-sm-4 col-md-12 slider-info slider-info-last">
+                        <h2>Join Us</h2>
+                        <p>Become a Gem</p>
+                    </div></a>
                 </div>
             </div> <!-- end #slider info container -->
    </div> 
