@@ -94,7 +94,7 @@ get_header( 'shop' ); ?>
                 <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
             </div>
     
-            <?php dynamic_sidebar('section-gem-product'); // shop sidebar main ?>	
+            <?php dynamic_sidebar('products-main'); // shop sidebar main ?>	
     
     <?php
 		/**
