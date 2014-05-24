@@ -27,3 +27,17 @@ register_nav_menus( array(
 	'section_links_3' => 'Section Links 3',
 	'section_links_4' => 'Section Links 4',
 ) );
+
+// sidebars
+
+$args = array(
+	'name'          => __( 'Section - Gem Products - Home', 'theme_text_domain' ),
+	'id'            => 'section-gem-product',
+	'description'   => '',
+        'class'         => '',
+	'before_widget' => '<li id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</li>',
+	'before_title'  => '<h2 class="widgettitle">',
+	'after_title'   => '</h2>' );
+
+register_sidebar( $args );
