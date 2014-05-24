@@ -409,7 +409,15 @@ color: #fff;
 text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 }
 
-
+ul.product_list_widget li {
+    background-color:transparent;
+    border:1px solid green;
+    float:left;
+    width:20%;
+}
+ul.product_list_widget li img{
+    width:100%;
+}
 
 
 
