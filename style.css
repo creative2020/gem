@@ -305,17 +305,15 @@ background-color: #a50050;
 #product-home {
     margin-top:22px;
     margin-bottom:22px;
-    height:120px;
+    
 }
 .prod-box {
-    background-image:url(images/product-fpo1.png);
     background-repeat:no-repeat;
     background-size:contain;
     min-height:120px;
     background-position:center;
 }
 .prod-box:hover {
-    background-image:url(images/product-fpo1.png);
     background-repeat:no-repeat;
     background-size:contain;
     min-height:120px;
@@ -411,13 +409,81 @@ text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 
 ul.product_list_widget li {
     background-color:transparent;
-    border:1px solid green;
     float:left;
     width:20%;
 }
 ul.product_list_widget li img{
     width:100%;
 }
+li.woocommerce_top_rated_products-2 {
+    display:none;
+}
+ul.product_list_widget {
+    color:red;
+}
+ul.product_list_widget li img {
+    width:90% !important;
+    text-align:center;
+    background-color:white;
+    float:left;
+}
+ul.product_list_widget li a {
+    background-color:transparent;
+    float:left;
+    width:90%;
+    padding:1.0em;
+}
+ul.product_list_widget li a:hover {
+    text-decoration:none;
+    color:#00b2a9;
+}
+    
+ul.product_list_widget li .amount {
+    background-color:#b20056;
+    color:white;
+    float:right;
+    margin-right:2.0em;
+    margin-top:-1.0em;
+    padding:0.5em;
+    
+}
+#woocommerce_top_rated_products-2 {
+    list-style-type:none !important;
+}
+
+/*
+colors
+@brand-primary  #428bca = #a50050 = gem1 - main pink
+@brand-success  #5cb85c = #00b2a9 = gem2 - teal accent
+@brand-info     #5bc0de = #b20056 = gem3 - dk pink
+@brand-warning  #f0ad4e = #f20075 = gem4 - lt pink (bright)
+@brand-danger   #d9534f = #650031 = gem5 - dk dk pink 
+
+Grays
+#2a2a2a - dk dk gray
+#555    - dk gray
+#808080 - md gray
+#ABABAB - lt gray
+#D5D5D5 - lt lt gray
+
+gray
+@gray-darker  = lighten(#000, 13.5%)
+@gray-dark    = lighten(#000, 20%)
+@gray         = lighten(#000, 33.5%)
+@gray-light   = lighten(#000, 60%)
+@gray-lighter = lighten(#000, 93.5%)
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 

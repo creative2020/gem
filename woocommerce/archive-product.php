@@ -93,8 +93,8 @@ get_header( 'shop' ); ?>
             <div class="pull-left">
                 <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
             </div>
-            
-            <?php get_sidebar('shopmain'); // shop sidebar main ?>	
+    
+            <?php dynamic_sidebar('section-gem-product'); // shop sidebar main ?>	
     
     <?php
 		/**

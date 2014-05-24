@@ -28,19 +28,13 @@ register_nav_menus( array(
 	'section_links_4' => 'Section Links 4',
 ) );
 
-<<<<<<< HEAD
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// Sidebars
 
 ////////////////////////////////////////////////////////
 
 $args = array(
-	'name'          => __( 'Section - Gem Product', 'theme_text_domain' ),
-=======
-// sidebars
-
-$args = array(
 	'name'          => __( 'Section - Gem Products - Home', 'theme_text_domain' ),
->>>>>>> 70d3e66bf3871e0d076789aeb39e433477ef77f2
 	'id'            => 'section-gem-product',
 	'description'   => '',
         'class'         => '',
@@ -49,10 +43,6 @@ $args = array(
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' );
 
-<<<<<<< HEAD
 register_sidebar( $args );
 
 ////////////////////////////////////////////////////////
-=======
-register_sidebar( $args );
->>>>>>> 70d3e66bf3871e0d076789aeb39e433477ef77f2
