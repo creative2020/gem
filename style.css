@@ -37,6 +37,10 @@ gray
 
 /* HEADS UP: Everything that you will normally find here can be found in the library/less/wp.less */
 
+h2 {
+    font-family: 'Nixie One', serif;
+}
+
 /* ////////////////////////////////////////////////button colors */
 .btn-color-gem1 {
     color:white;
@@ -407,21 +411,21 @@ color: #fff;
 text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 }
 
-ul.product_list_widget li {
+#product-home ul.product_list_widget li {
     background-color:transparent;
     float:left;
     width:20%;
 }
-ul.product_list_widget li img{
+#product-home ul.product_list_widget li img{
     width:100%;
 }
-li.woocommerce_top_rated_products-2 {
+#product-home li.woocommerce_top_rated_products-2 {
     display:none;
 }
-ul.product_list_widget {
+#product-home ul.product_list_widget {
     color:red;
 }
-ul.product_list_widget li img {
+#product-home ul.product_list_widget li img {
     width:90% !important;
     text-align:center;
     background-color:white;
@@ -429,18 +433,18 @@ ul.product_list_widget li img {
     box-shadow: 0 0px 0px 0 rgba(0,0,0,0) !important;
     -webkit-box-shadow: 0 0px 0px 0 rgba(0,0,0,0) !important; 
 }
-ul.product_list_widget li a {
+#product-home ul.product_list_widget li a {
     background-color:transparent;
     float:left;
     width:90%;
     padding:1.0em;
 }
-ul.product_list_widget li a:hover {
+#product-home ul.product_list_widget li a:hover {
     text-decoration:none;
     color:#00b2a9;
 }
     
-ul.product_list_widget li .amount {
+#product-home ul.product_list_widget li .amount {
     background-color:#b20056;
     color:white;
     float:right;
@@ -452,6 +456,54 @@ ul.product_list_widget li .amount {
 #woocommerce_top_rated_products-2 {
     list-style-type:none !important;
 }
+
+/*Shop Sidebar*/
+
+#sidebar li.woocommerce {
+    border:0px solid green;
+}
+
+#sidebar li.widget_shopping_cart {
+    list-style-type:none;
+    float:none;
+}
+#sidebar li.widget_recently_viewed_products {
+    list-style-type:none;
+    background-color:yellow;
+    color:red;
+    float:none;
+}
+#sidebar ul.product-categories {
+    list-style-type:none;
+}
+#sidebar h2.widgettitle {
+    list-style-type:none !important;
+}
+#sidebar .widget_shopping_cart_content {
+    width:100%;
+    display:block;
+    margin-bottom:22px;
+}
+#sidebar ul.product_list_widget {
+    width:100%;
+    height:100px;
+}
+#sidebar li.widget_product_categories {
+    list-style-type:none;
+    margin:0;
+}
+#sidebar li.widget_product_categories h2{
+    font-size:1.5em;
+    color:#000000;
+}
+#sidebar li.widget_product_categories a{
+    color:#b20056;
+}
+#sidebar li.widget_product_categories a:hover{
+    text-decoration:none;
+    color:#00b2a9;
+}
+
 
 /*
 colors

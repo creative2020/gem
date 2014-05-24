@@ -53,7 +53,7 @@ get_header( 'shop' ); ?>
                 <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
             </div>
             
-            <?php get_sidebar('sidebar1'); // sidebar 2 ?>	
+            <?php dynamic_sidebar('products-main'); // shop sidebar main ?>	
     
     <?php
 		/**
@@ -61,7 +61,7 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		do_action( 'woocommerce_sidebar' );
+		//do_action( 'woocommerce_sidebar' );
 	?>
                         
         </div> <!-- end #sidebar -->
