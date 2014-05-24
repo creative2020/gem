@@ -19,7 +19,7 @@ require_once ('tt-shortcodes.php');
 // CPT's
 require_once ('tt-cpt.php');
 
-// Menus
+//////////////////////////////////////////////////////// Menus
 
 register_nav_menus( array(
 	'section_links_1' => 'Section Links 1',
@@ -27,3 +27,21 @@ register_nav_menus( array(
 	'section_links_3' => 'Section Links 3',
 	'section_links_4' => 'Section Links 4',
 ) );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Sidebars
+
+////////////////////////////////////////////////////////
+
+$args = array(
+	'name'          => __( 'Section - Gem Product', 'theme_text_domain' ),
+	'id'            => 'section-gem-product',
+	'description'   => '',
+        'class'         => '',
+	'before_widget' => '<li id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</li>',
+	'before_title'  => '<h2 class="widgettitle">',
+	'after_title'   => '</h2>' );
+
+register_sidebar( $args );
+
+////////////////////////////////////////////////////////
