@@ -44,7 +44,7 @@ if ($name == 'all') {
 	// The Query
 $args = array(
 	'post_type' => 'party',
-	'post_status' => 'published',
+	'post_status' => 'publish',
 	'order' => 'ASC',
 	'posts_per_page'=> -1
 );
@@ -58,7 +58,7 @@ if ($name == 'current') {
 	// The Query
 $args = array(
 	'post_type' => 'party',
-	'post_status' => 'published',
+	'post_status' => 'publish',
     'author' => $user_ID,
 	'order' => 'ASC',
 	'posts_per_page'=> -1
@@ -130,7 +130,7 @@ if ($name == 'all') {
 	// The Query
 $args = array(
 	'post_type' => 'faq',
-	'post_status' => 'published',
+	'post_status' => 'publish',
 	'order' => 'ASC',
 	'posts_per_page'=> -1
 );
@@ -201,7 +201,76 @@ function gem_button1($atts, $content = null) {
     return '<a class="' . $classes . '" href="' . $link . '" style="background:' . $color . ';float:' . $float . '" target="' . $target . '">' . $content . '</a>';
 }
 
+//////////////////////////////////////////////////////// Agreement text
+add_shortcode( 'gem_agreement', 'gem_agreement' );
+function gem_agreement ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => '',
+		), $atts )
+	);
+// code
+    global $post;
+    
+    $legal_post = get_post( 274, ARRAY_A );
+    $legal_content = $legal_post['post_content'];
+    
+    //print_r($legal_post);
+    
+return $legal_content;    
+}
+/////////////////////////////
+//////////////////////////////////////////////////////// Policy text
+add_shortcode( 'gem_policy', 'gem_policy' );
+function gem_policy ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => '',
+		), $atts )
+	);
+// code
+    global $post;
+    
+    $policy_post = get_post( 638, ARRAY_A );
+    $policy_content = $policy_post['post_content'];
+    
+    //print_r($policy_content);
+    
+return $policy_content;    
+}
+/////////////////////////////
+//////////////////////////////////////////////////////// Starter Kit Image
+add_shortcode( 'gem_starter_kit', 'gem_starter_kit' );
+function gem_starter_kit ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'width' => '600',
+		), $atts )
+	);
+// code
+    global $post;
+    
+    $gem_kit = get_field('starter_kit', 'option');
+    
+    //print_r($gem_kit);
+    
+    if( !empty($gem_kit) ) { 
+ 
+	   return '<img src="' . $gem_kit['url'] . '" alt="' . $gem_kit['alt'] . '" width="' . $width . '" />';
+
+    } else {
+        
+            return 'need starter kit image';
+        }
+    
+}
+/////////////////////////////
 
 
 

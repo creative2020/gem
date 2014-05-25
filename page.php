@@ -22,7 +22,7 @@
             ?>
             </div>
             
-            <?php dynamic_sidebar('marketing'); // sidebar ?>			
+            <?php dynamic_sidebar('sidebar1 '); // main sidebar ?>			
                         
         </div> <!-- end #sidebar -->
         

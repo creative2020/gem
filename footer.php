@@ -5,8 +5,14 @@
     <div class="row">
           
              <div class="col-md-6 footer-gem">
+                 
+                 <?php 
+                    $co_name = get_field('company_name', 'option'); 
+                    $co_phone = get_field('company_phone', 'option');
+                 
+                 ?>
         
-                <p>&copy; <?php echo of_get_option( 'gem_co_name', 'no entry' ); ?> | <?php echo of_get_option( 'gem_co_phone', 'enter phone number' ); ?></p>
+                <p>&copy; <?php echo $co_name; ?> | <?php echo $co_phone; ?></p>
                  
             </div>
             <div class="col-md-6">
