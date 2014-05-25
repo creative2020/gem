@@ -45,7 +45,7 @@
                 <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
             </div>
             
-            <?php get_sidebar('sidebar1'); // sidebar 2 ?>			
+            <?php dynamic_sidebar('products-main'); // Shop sidebar ?>			
                         
         </div> <!-- end #sidebar -->
         

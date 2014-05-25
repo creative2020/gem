@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Page with photo
+*/
+?>
+
 <?php get_header(); ?>
 
 <div id="page-wrap" class="row">
@@ -13,16 +19,14 @@
         </div>	<!-- end #main -->	
         
         <div id="sidebar" class="col-md-4">
-                    
-            <div class="page-feature-img">
+            
             <?php 
                 if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
-                  the_post_thumbnail('large');
+                  the_post_thumbnail('medium');
                 } 
             ?>
-            </div>
-            
-            <?php dynamic_sidebar('marketing'); // sidebar ?>			
+                    
+            <?php get_sidebar('sidebar1'); // sidebar 2 ?>			
                         
         </div> <!-- end #sidebar -->
         

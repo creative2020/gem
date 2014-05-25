@@ -37,8 +37,11 @@ gray
 
 /* HEADS UP: Everything that you will normally find here can be found in the library/less/wp.less */
 
-h2 {
+h2, h3 {
     font-family: 'Nixie One', serif;
+}
+.brand-pink {
+    color:#a50050;
 }
 
 /* ////////////////////////////////////////////////button colors */
@@ -503,6 +506,13 @@ text-shadow: 0 -1px 0 rgba(0,0,0,.6);
     text-decoration:none;
     color:#00b2a9;
 }
+
+/*Page Featured Image*/
+
+.page-feature-img img{
+    width:100%;
+
+
 
 
 /*
