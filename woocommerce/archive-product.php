@@ -13,6 +13,29 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header( 'shop' ); ?>
 
+<?php
+
+global $wp_query;
+// get the query object
+$cat_obj = $wp_query->get_queried_object();
+ 
+//print_r($cat_obj);
+ 
+if($cat_obj)    {
+    $category_name = $cat_obj->name;
+    $category_desc = $cat_obj->description;
+    $category_ID  = $cat_obj->term_id;
+}
+
+
+    $idcat = $category_ID;
+        $thumbnail_id = get_woocommerce_term_meta( $idcat, 'thumbnail_id', true );
+        $image = wp_get_attachment_url( $thumbnail_id );
+?>
+        <div class="rd-category-wrap">
+            <div class="rd-category-img" style="background: url('<?php echo $image; ?>') top right no-repeat;height:100px;"></div>
+        </div>    
+
 <div id="page-wrap" class="row">
     
     <div class="col-md-12">
@@ -90,10 +113,6 @@ get_header( 'shop' ); ?>
 
 <div id="sidebar" class="col-md-3">
                     
-            <div class="pull-left">
-                <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
-            </div>
-    
             <?php dynamic_sidebar('products-main'); // shop sidebar main ?>	
     
     <?php
