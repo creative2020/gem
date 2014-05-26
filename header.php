@@ -28,6 +28,7 @@
     <?php wp_head(); ?>
     <!-- end of wordpress head -->
     <link href='http://fonts.googleapis.com/css?family=Nixie+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/tt-lib/tt-user-meta.css">        
 </head>
 	

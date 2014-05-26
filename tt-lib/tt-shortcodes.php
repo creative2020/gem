@@ -178,7 +178,7 @@ wp_reset_postdata();
 return $output;
 }
 
-////////////////////////////////////////////////////// Shortcode: hsr button
+////////////////////////////////////////////////////// Shortcode: gem button
 add_shortcode( 'gem_button', 'gem_button1' );
 function gem_button1($atts, $content = null) {
     extract(shortcode_atts(array(

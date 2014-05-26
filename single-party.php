@@ -85,6 +85,19 @@
     
 </div> <!-- end page wrap -->
 
+<?php 
+
+    $current_user = wp_get_current_user();
+    $party_author = get_the_author_meta('ID');
+
+if ( $current_user->ID == $party_author ) {
+
+    get_template_part( 'section', 'party-market' ); 
+
+}
+
+?>
+
 <?php get_template_part( 'section', 'links' ); ?>
 
 
