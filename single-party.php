@@ -4,14 +4,32 @@
     <div class="hidden-xs hidden-sm col-md-12">
         
         <?php
-            $bg_img = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'full' );
+            //$bg_img = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'full' );
             $party_img = get_field('party_image');
+
+            if ($party_img == "Spring") {
+                
+                $bg_img = get_field('spring_bg_img', 'option');
+                
+            }
+            if ($party_img == "Default") {
+                
+                $bg_img = get_field('default_bg_img', 'option');
+                
+            }
+            if ($party_img == "Collegiate") {
+                
+                $bg_img = get_field('collegiate_bg_img', 'option');
+                
+            }
+
             
-            echo $party_img;
+            //echo $party_img;
+            //print_r($bg_img);
 
         ?>
         
-        <div class="party-img" style="background: url('<?php echo $bg_img[0]; ?>') top right no-repeat;height:100px;">
+        <div class="party-img" style="background: url('<?php echo $bg_img['url']; ?>') top right no-repeat;height:100px;">
 
             <div class="col-md-offset-1">
                 
