@@ -78,6 +78,7 @@ class ContentType {
     }
 }
 $gems = new ContentType('gem', array(), array('plural_name' => 'gems'));
+$gems = new ContentType('host', array(), array('plural_name' => 'hosts'));
 $gems = new ContentType('party', array(), array('plural_name' => 'parties'));
 $gems = new ContentType('contact', array(), array('plural_name' => 'contacts'));
 $gems = new ContentType('faq', array(), array('plural_name' => 'faqs'));
