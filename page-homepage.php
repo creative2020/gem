@@ -33,6 +33,73 @@ Template Name: Homepage
    </div> 
 </div> <!-- end #slider -->
 
+<?php 
+
+    $video_1_img = get_field('video_1_image','option');
+    $video_2_img = get_field('video_2_image','option');
+    $video_3_img = get_field('video_3_image','option');
+
+    //print_r($video_1_img);
+    
+
+?>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog home-video">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo the_field( 'video_1_headline', 'option' ); ?></h4>
+      </div>
+      <div class="modal-body">
+        <?php echo the_field('video_1_code', 'option'); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog home-video">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo the_field( 'video_2_headline', 'option' ); ?></h4>
+      </div>
+      <div class="modal-body">
+        <?php echo the_field('video_2_code', 'option'); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog home-video">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo the_field( 'video_3_headline', 'option' ); ?></h4>
+      </div>
+      <div class="modal-body">
+        <?php echo the_field('video_3_code', 'option'); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div id="videos" class="row">
     
     <div class="col-md-12">
@@ -41,34 +108,42 @@ Template Name: Homepage
         
             <div class="row">
                 
-                    <div class="col-sm-12 col-md-4 video-box">
+                    <div class="col-sm-12 col-md-4 video-box" style="background-image:url(<?php echo $video_1_img['sizes']['medium']; ?>);">
+                        
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                        
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>
                         </div>
                         
                         <div class="video-headline">
-                            <h4><?php echo of_get_option( 'video_1_headline', 'option' ); ?></h4>
-                            <?php echo of_get_option( 'video_1_image', 'option' ); ?>
-                        </div>
+                            <h4><?php echo the_field( 'video_1_headline', 'option' ); ?></h4>
+                            
+                        </div></a>
                         
                     </div>
-                    <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(/wp-content/themes/gem/images/icon-gem-pink-25.png);">
+                    <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(<?php echo $video_2_img['sizes']['medium']; ?>);">
+                        
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                        
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>
                         </div>
                         
                         <div class="video-headline">
-                            <h4><?php echo of_get_option( 'video_2_headline', 'option' ); ?></h4>
-                        </div>
+                            <h4><?php echo the_field( 'video_2_headline', 'option' ); ?></h4>
+                        </div></a>
                     </div>
-                    <div class="col-md-4 hidden-xs hidden-sm video-box">
+                    <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(<?php echo $video_3_img['sizes']['medium']; ?>);">
+                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                            
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>
                         </div>
                         
                         <div class="video-headline">
-                            <h4><?php echo of_get_option( 'video_2_headline', 'option' ); ?></h4>
-                        </div>
+                            <h4><?php echo the_field( 'video_3_headline', 'option' ); ?></h4>
+                        </div></a>
                     </div>
                 
             </div>
