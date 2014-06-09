@@ -42,13 +42,33 @@ Template Name: Homepage
             <div class="row">
                 
                     <div class="col-sm-12 col-md-4 video-box">
+                        <div class="video-play">
+                            <i class="fa fa-play-circle-o gem-play"></i>
+                        </div>
+                        
+                        <div class="video-headline">
+                            <h4><?php echo of_get_option( 'video_1_headline', 'option' ); ?></h4>
+                            <?php echo of_get_option( 'video_1_image', 'option' ); ?>
+                        </div>
                         
                     </div>
-                    <div class="col-md-4 hidden-xs hidden-sm video-box">
+                    <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(/wp-content/themes/gem/images/icon-gem-pink-25.png);">
+                        <div class="video-play">
+                            <i class="fa fa-play-circle-o gem-play"></i>
+                        </div>
                         
+                        <div class="video-headline">
+                            <h4><?php echo of_get_option( 'video_2_headline', 'option' ); ?></h4>
+                        </div>
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm video-box">
+                        <div class="video-play">
+                            <i class="fa fa-play-circle-o gem-play"></i>
+                        </div>
                         
+                        <div class="video-headline">
+                            <h4><?php echo of_get_option( 'video_2_headline', 'option' ); ?></h4>
+                        </div>
                     </div>
                 
             </div>
