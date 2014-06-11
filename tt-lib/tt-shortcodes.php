@@ -109,6 +109,7 @@ if ( $the_query->have_posts() ) {
 wp_reset_postdata();
 return $output;
 }
+//////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////// FAQ list
 add_shortcode( 'help', 'help' );
@@ -272,7 +273,76 @@ function gem_starter_kit ( $atts ) {
 }
 /////////////////////////////
 
+////////////////////////////////////////////////////////////// Gem Rep List
+add_shortcode( 'gem_rep_list', 'gem_rep_list' );
+function gem_rep_list ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+			'list' => 'y',
+		), $atts )
+	);
+
+$args = array(
+    'role' => 'aamrole_532c6893daad0',
+	
+ );
+    
+// The Query
+$user_query = new WP_User_Query( $args );
+   
+    
+///
+    
+//testing
+
+
+//print_r($user_query->results);
+//print_r($user);
+    
+///    
+//$wp_roles;
+    //print_r($user_data);
+    
+    
+// User Loop
+if ( ! empty( $user_query->results ) ) {
+	foreach ( $user_query->results as $user ) {
+        
+        $user_data = get_user_meta( $user->ID ); 
+        //print_r($user_data);
+        
+		$output .= '<div class="user-name pull-left">' . $user->display_name . '</div>' .
+            '<div class="user-state pull-left">' . $user_data['state'][0] . '</div>' .
+            '<a href="/shop/?mygem=' . $user->user_login . '"><div class="user-store">Shop Now ' . $user_data['store_name'][0] . '</div></a>';
+        
+	}
+} else {
+	echo 'No Gem Reps found.';
+}
+/* Restore original Post Data */
+//wp_reset_postdata();
+return $output;
+}
+
+/////////////////////////////////
+
+////////////////////////////////////////////////////////////// Cookie data
+add_shortcode( 'gem_rep_cookie', 'gem_rep_cookie' );
+function gem_rep_cookie ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => '',
+		), $atts )
+	);
+
+return 'Cookie is set as '.($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : 'Guest');
+}
+/////////////////////////////////
 
 
 
