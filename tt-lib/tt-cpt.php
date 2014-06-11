@@ -131,18 +131,65 @@ add_action( 'init', 'help', 0 );
 */
     
 
-// Roles
+////////////////////////////////////////////////////////////////////////// Roles
 function role_gem_new () {
     
     $capabilities = array(
         'read'         => true,  // true allows this capability
         'edit_posts'   => false,
         'delete_posts' => false, // Use false to explicitly deny
+        
     );
 
 add_role( 'gem_new', 'Gem New', $capabilities );
     
 }   
-role_gem_new ();    
+role_gem_new ();
+/////////////////////////////////////
+function tt_role_client () {
     
+    $capabilities = array(
+        'manage_options' => true,
+        
+    );
+
+add_role( 'tt_client', 'Client', $capabilities );
+    
+}
+//add_action( 'init', 'tt_role_client', 0 ); // not working ??
+tt_role_client (); 
+///////////////////////////////////// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
