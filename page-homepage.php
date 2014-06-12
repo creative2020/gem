@@ -45,7 +45,7 @@ Template Name: Homepage
 ?>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog home-video">
     <div class="modal-content">
       <div class="modal-header">
@@ -63,7 +63,7 @@ Template Name: Homepage
   </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog home-video">
     <div class="modal-content">
       <div class="modal-header">
@@ -81,7 +81,7 @@ Template Name: Homepage
   </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog home-video">
     <div class="modal-content">
       <div class="modal-header">
@@ -110,7 +110,7 @@ Template Name: Homepage
                 
                     <div class="col-sm-12 col-md-4 video-box" style="background-image:url(<?php echo $video_1_img['sizes']['medium']; ?>);">
                         
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                        <a href="#" data-toggle="modal" data-target="#myModal-1" class="video-link">
                         
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>
@@ -124,7 +124,7 @@ Template Name: Homepage
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(<?php echo $video_2_img['sizes']['medium']; ?>);">
                         
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                        <a href="#" data-toggle="modal" data-target="#myModal-2" class="video-link">
                         
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>
@@ -135,7 +135,7 @@ Template Name: Homepage
                         </div></a>
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(<?php echo $video_3_img['sizes']['medium']; ?>);">
-                        <a href="#" data-toggle="modal" data-target="#myModal" class="video-link">
+                        <a href="#" data-toggle="modal" data-target="#myModal-3" class="video-link">
                             
                         <div class="video-play">
                             <i class="fa fa-play-circle-o gem-play"></i>

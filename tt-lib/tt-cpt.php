@@ -132,20 +132,8 @@ add_action( 'init', 'help', 0 );
     
 
 ////////////////////////////////////////////////////////////////////////// Roles
-function role_gem_new () {
-    
-    $capabilities = array(
-        'read'         => true,  // true allows this capability
-        'edit_posts'   => false,
-        'delete_posts' => false, // Use false to explicitly deny
-        
-    );
 
-add_role( 'gem_new', 'Gem New', $capabilities );
-    
-}   
-role_gem_new ();
-/////////////////////////////////////
+///////////////////////////////////// Client role
 function tt_role_client () {
     
     $capabilities = array(
