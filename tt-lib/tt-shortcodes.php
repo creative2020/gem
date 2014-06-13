@@ -372,14 +372,195 @@ $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
 }
 /////////////////////////////////
 
+////////////////////////////////////////////////////////////// Gem Rep Search by Name
+add_shortcode( 'rep_search_name', 'rep_search_name' );
+function rep_search_name ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+			'list' => 'y',
+		), $atts )
+	);
+    
+    
+    $st = (isset($_GET['usersearch']) ? $_GET['usersearch'] : '' );
+    $state = (isset($_GET['state']) ? $_GET['state'] : '' );
+?>
+<h2>Search by Name</h2>
+<form id="rep-name" action="" method="get">
+    <div class="form-group">
+        <input class="form-control" name="usersearch" id="usersearch" placeholder="Gem Rep Name" value="<?php echo $st; ?>" type="text"></br>
+        <input class="btn btn-primary" name="dosearch" type="submit" value="Search by Name">
+    </div>
+</form>
+
+<?php
+    
+    $usersearch = stripslashes( trim($_GET['usersearch']) );
+
+$args = array(
+                'role' => '',
+                //'meta_key' => 'first_name',
+                'orderby' => 'meta_value',
+                'order' => 'ASC',
+                'offset' => '',
+                'number' => '',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    0 => array(
+                        'key'     => 'first_name',
+                        'value'   => $usersearch ,
+                        'compare' => 'LIKE'
+                    ),
+                    1 => array(
+                        'key'     => 'last_name',
+                        'value'   => $usersearch ,
+                        'compare' => 'LIKE'
+                    ),
+                    
+                )
+                
+                
+);
+    
+// The Query
+$user_query = new WP_User_Query( $args );
+   
+    
+///
+    
+//testing
 
 
+//print_r($user_query->results);
+//print_r($user);
+    
+///    
+//$wp_roles;
+    //print_r($user_data);
+
+// User Loop
+if ( ! empty( $user_query->results ) AND (!empty($usersearch) ) ){
+    
+    $output .= 
+            '<h3>The following Gem Reps were found</h3>'.
+            '<p>Click on a Gem to shop their storefront</p>';
+    
+	foreach ( $user_query->results as $user ) {
+        
+        $user_data = get_user_meta( $user->ID ); 
+        //print_r($user_data);
+        
+		$output .= 
+            '<div class="user-name pull-left">' . $user->display_name . '</div>' .
+            '<div class="user-state pull-left">' . $user_data['state'][0] . '</div>' .
+            '<a href="/shop/?mygem=' . $user->user_login . '"><div class="user-store">Shop Now ' . $user_data['store_name'][0] . '</div></a>';
+        
+	}
+} else {
+	if (!empty($usersearch) ) {
+	   $output = 'Sorry, No Gem Reps found.';
+    }
+}
+/* Restore original Post Data */
+//wp_reset_postdata();
+return $output;
+}
+
+/////////////////////////////////
+////////////////////////////////////////////////////////////// Gem Rep Search by State
+add_shortcode( 'rep_search_state', 'rep_search_state' );
+function rep_search_state ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+			'list' => 'y',
+		), $atts )
+	);
+    
+    $state = (isset($_GET['state']) ? $_GET['state'] : '' );
+?>
+<h2>Search by State</h2>
+<form id="rep-state" action="" method="get">
+    <div class="form-group">
+        <input class="form-control" name="state" id="state" placeholder="State" value="<?php echo $state; ?>" type="text"></br>
+        <input class="btn btn-primary" name="dosearch" type="submit" value="Search by State">
+    </div>
+</form>
+
+<?php
+    
+    //$usersearch = stripslashes( trim($_GET['usersearch']) );
+    $rep_state = stripslashes( trim($_GET['state']) );
+
+$args = array(
+                'role' => '',
+                //'meta_key' => 'first_name',
+                'orderby' => 'meta_value',
+                'order' => 'ASC',
+                'offset' => '',
+                'number' => '',
+                'meta_query' => array(
+                    'relation' => 'OR',
+                    0 => array(
+                        'key'     => 'state',
+                        'value'   => $rep_state ,
+                        'compare' => 'LIKE'
+                    )
+                )
+);
+    
+// The Query
+$user_query = new WP_User_Query( $args );
+   
+    
+///
+    
+//testing
 
 
+//print_r($user_query->results);
+//print_r($user);
+    
+///    
+//$wp_roles;
+    //print_r($user_data);
 
+// User Loop
+    
+    
+    
+if ( ! empty( $user_query->results ) AND (!empty($rep_state) ) ){
+    
+    $output .= 
+            '<h3>The following Gem Reps were found</h3>'.
+            '<p>Click on a Gem to shop their storefront</p>';
+    
+	foreach ( $user_query->results as $user ) {
+        
+        $user_data = get_user_meta( $user->ID ); 
+        //print_r($user_data);
+        
+		$output .= 
+            '<div class="user-name pull-left">' . $user->display_name . '</div>' .
+            '<div class="user-state pull-left">' . $user_data['state'][0] . '</div>' .
+            '<a href="/shop/?mygem=' . $user->user_login . '"><div class="user-store">Shop Now ' . $user_data['store_name'][0] . '</div></a>';
+        
+	}
+} else {
+    if (!empty($rep_state) ) {
+	   $output = 'Sorry, No Gem Reps found.';
+    }
+}
+/* Restore original Post Data */
+//wp_reset_postdata();
+return $output;
+}
 
-
-
-
+/////////////////////////////////
 
 

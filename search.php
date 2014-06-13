@@ -1,10 +1,12 @@
 <?php get_header(); ?>
-			
-			<div id="content" class="clearfix row">
-			
-				<div id="main" class="col col-lg-8 clearfix" role="main">
-				
-					<div class="page-header"><h1><span><?php _e("Search Results for","wpbootstrap"); ?>:</span> <?php echo esc_attr(get_search_query()); ?></h1></div>
+
+<div id="page-wrap" class="row">
+    
+    <div class="col-md-12">
+    
+    <div id="page-left" class="col-md-6 col-md-offset-1">
+        
+            <div class="page-header"><h1><span><?php _e("Search Results for","wpbootstrap"); ?>:</span> <?php echo esc_attr(get_search_query()); ?></h1></div>
 
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					
@@ -62,10 +64,30 @@
 					
 					<?php endif; ?>
 			
-				</div> <!-- end #main -->
-    			
-    			<?php get_sidebar(); // sidebar 1 ?>
+				</div> <!-- end #page left -->
+            
+        
+        <div id="sidebar" class="col-md-4">
+                    
+            <div class="page-feature-img">
+            <?php 
+                if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+                  the_post_thumbnail('large');
+                } 
+            ?>
+            </div>
+            
+            <?php dynamic_sidebar('products-main'); // Shop sidebar ?>			
+                        
+        </div> <!-- end #sidebar -->
+        
+           
     
-			</div> <!-- end #content -->
+    </div> 
+    
+</div> <!-- end page wrap -->
+
+<?php get_template_part( 'section', 'links' ); ?>
+
 
 <?php get_footer(); ?>
