@@ -343,6 +343,34 @@ function gem_rep_cookie ( $atts ) {
 return 'Cookie is set as '.($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : 'Guest');
 }
 /////////////////////////////////
+////////////////////////////////////////////////////////////// My Gem Rep
+add_shortcode( 'my_gem_rep', 'my_gem_rep' );
+function my_gem_rep ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => '',
+		), $atts )
+	);
+    
+$my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : 'Guest');
+$my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
+$rep = get_userdata( $my_rep_user_id );
+$rep_profile = get_user_meta($my_rep_user_id);
+$rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
+    
+    //print_r($rep_profile);
+    
+    return 
+        '<div class="gem-rep-wrap"><div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>' .
+        $rep->first_name . ' ' . $rep->last_name . ' ID# ' .$my_rep_id . '</br>' .
+        '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '<div>' . 
+        '<div class="rep_email"><a href="#">Email me</a></div>';
+        
+        
+}
+/////////////////////////////////
 
 
 
