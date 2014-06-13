@@ -7,17 +7,21 @@ URL: htp://2020creative.com
 
 
 //////////////////////////////////////////////////////// TEST
-add_shortcode( 'test', 'test1' );
-function test1 ( $atts ) {
+add_shortcode( 'post_info', 'post_info' );
+function post_info ( $atts ) {
 
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'name' => '',
+			'name' => 'comp plan',
+            'id' => '',
 		), $atts )
 	);
+    
+    $tt_post_content = get_post_field( 'post_content', $id );
+    
 // code
-return 'TEST Shortcode is working';    
+return $tt_post_content;    
 }
 ////////////////////////////////////////////////////////////// Gem party list
 add_shortcode( 'gem_party_list', 'gem_party_list' );

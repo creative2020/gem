@@ -609,6 +609,9 @@ text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 li.widget {
     list-style-type:none !important;
 }
+ul.product_list_widget {
+    min-height:150px;
+}
 /*
 colors
 @brand-primary  #428bca = #a50050 = gem1 - main pink
