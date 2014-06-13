@@ -401,8 +401,7 @@ function rep_search_name ( $atts ) {
     $usersearch = stripslashes( trim($_GET['usersearch']) );
 
 $args = array(
-                'role' => 'aamrole_532c6893daad0',
-                //'meta_key' => 'first_name',
+                'role' => '',
                 'orderby' => 'meta_value',
                 'order' => 'ASC',
                 'offset' => '',
@@ -421,8 +420,6 @@ $args = array(
                     ),
                     
                 )
-                
-                
 );
     
 // The Query
@@ -498,8 +495,7 @@ function rep_search_state ( $atts ) {
     $rep_state = stripslashes( trim($_GET['state']) );
 
 $args = array(
-                'role' => 'aamrole_532c6893daad0',
-                //'meta_key' => 'first_name',
+                'role' => '',
                 'orderby' => 'meta_value',
                 'order' => 'ASC',
                 'offset' => '',
