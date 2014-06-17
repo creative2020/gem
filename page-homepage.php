@@ -9,7 +9,7 @@ Template Name: Homepage
     <div class="col-md-12">
         
             <div class="hidden-xs hidden-sm col-md-6 col-md-offset-1 slider-img">
-                
+                <?php echo do_shortcode("[metaslider id=1336]"); ?>
             </div>
         
             <div class="col-sm-12 col-md-4 slider-info-container">
@@ -57,7 +57,7 @@ Template Name: Homepage
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+        <a href="/help-and-support/videos/"><button type="button" class="btn btn-primary">More Videos</button></a>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ Template Name: Homepage
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+        <a href="/help-and-support/videos/"><button type="button" class="btn btn-primary">More Videos</button></a>
       </div>
     </div>
   </div>
@@ -93,7 +93,7 @@ Template Name: Homepage
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a href="#"><button type="button" class="btn btn-primary">More Videos</button></a>
+        <a href="/help-and-support/videos/"><button type="button" class="btn btn-primary">More Videos</button></a>
       </div>
     </div>
   </div>

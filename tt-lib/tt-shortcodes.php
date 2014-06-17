@@ -518,22 +518,6 @@ $args = array(
 $user_query = new WP_User_Query( $args );
    
     
-///
-    
-//testing
-
-
-//print_r($user_query->results);
-//print_r($user);
-    
-///    
-//$wp_roles;
-    //print_r($user_data);
-
-// User Loop
-    
-    
-    
 if ( ! empty( $user_query->results ) AND (!empty($rep_state) ) ){
     
     $output .= 
@@ -557,10 +541,95 @@ if ( ! empty( $user_query->results ) AND (!empty($rep_state) ) ){
     }
 }
 /* Restore original Post Data */
-//wp_reset_postdata();
 return $output;
 }
 
 /////////////////////////////////
 
+////////////////////////////////////////////////////////////// Gem contact list
+add_shortcode( 'gem_contact_list', 'gem_contact_list' );
+function gem_contact_list ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'current',
+            'gem_id' => '',
+			'list' => 'n',
+		), $atts )
+	);
+
+/////////////////////////////////////// Variables
+$user_ID = get_current_user_id();
+$user_data = get_user_meta( $user_ID );
+$user_photo_id = $user_data[photo][0];
+$user_photo_url = wp_get_attachment_url( $user_photo_id );
+$user_photo_img = '<img src="' . $user_photo_url . '">';
+
+/////////////////////////////////////// All Query    
+if ($name == 'all') {
+	// The Query
+$args = array(
+	'post_type' => 'contact',
+	'post_status' => 'publish',
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+/////////////////////////////////////// Current Author Query
+if ($name == 'current') {
+	// The Query
+$args = array(
+	'post_type' => 'contact',
+	'post_status' => 'publish',
+    'author' => $user_ID,
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+    
+global $post;
+// top
+
+  $output .= '<div class="contact-wrap">';
+  
+// The Loop
+if ( $the_query->have_posts() ) {
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		// pull meta for each post
+		$post_id = get_the_ID();
+		$permalink = get_permalink( $id );
+        $post_title = get_the_title();
+        $contact_email = get_field('email');
+        
+        $current_user = wp_get_current_user();
+		$author = get_the_author();
+		$author_id = the_author_meta( ID, $author );
+		
+//HTML
+        
+     $output .= '<div class="contact-item"><a href="/account/my-contact/?gform_post_id=' . $post_id . '">' . $post_title . '</a>' .
+                '<span class="email">' . $contact_email . '</span></div>';   
+        
+
+	}
+} else {
+	// no posts found
+	echo '<h2>No Active Gem Parties found</h2>';
+}
+    
+    $output .= '</div>';
+    
+/* Restore original Post Data */
+return $output;
+}
+//////////////////////////////////////////////////////////////
