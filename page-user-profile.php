@@ -20,6 +20,7 @@ get_header(); ?>
             <?php 
                 $user_ID = get_current_user_id();
                 $user_data = get_user_meta( $user_ID );
+                $user = get_userdata( $user_ID );
                 $user_photo_id = $user_data[photo][0];
                 $user_photo_url = wp_get_attachment_url( $user_photo_id );
                 $user_photo_img = '<img src="' . $user_photo_url . '">';
@@ -32,7 +33,7 @@ get_header(); ?>
                 );
                 
                 // TEST arrays
-                //echo print_r($user_data) . '</br></br>';
+                //echo print_r($user) . '</br></br>';
                 //echo print_r($class) . '</br></br>';
                 ?>
                 <style>
@@ -45,26 +46,18 @@ get_header(); ?>
                 
                 
                 <div class="<?php echo $class[row] ?>">
+                    <div class="<?php echo $class[label] ?>">My photo: </div>
+                    <div class="<?php echo $class[data] ?>"><?php echo $user_photo_img ?></div>
+                </div>        
+                <div class="<?php echo $class[row] ?>">
                     <div class="<?php echo $class[label] ?>">Name: </div>
                     <div class="<?php echo $class[data] ?>"><?php echo $user_data[first_name][0] ?> <?php echo $user_data[last_name][0] ?></div>
                 </div>
                 <div class="<?php echo $class[row] ?>">
-                    <div class="<?php echo $class[label] ?>">Store Name: </div>
-                    <div class="<?php echo $class[data] ?>"><?php echo $user_data[store_name][0] ?></div>
+                    <div class="<?php echo $class[label] ?>">Store URL: </div>
+                    <div class="<?php echo $class[data] ?>">www.RockDarling.com/<?php echo $user->user_login ?></div>
                 </div>
-                <div class="<?php echo $class[row] ?>">
-                    <div class="<?php echo $class[label] ?>">Store url: </div>
-                    <div class="<?php echo $class[data] ?>"><?php echo $user_data[store_url][0] ?></div>
-                </div>
-                <div class="<?php echo $class[row] ?>">
-                    <div class="<?php echo $class[label] ?>">My url: </div>
-                    <div class="<?php echo $class[data] ?>"><?php echo $user_data[my_url][0] ?></div>
-                </div>
-                <div class="<?php echo $class[row] ?>">
-                    <div class="<?php echo $class[label] ?>">My photo: </div>
-                    <div class="<?php echo $class[data] ?>"><?php echo $user_photo_img ?></div>
-                </div>
-                            
+                       
                           </br>  
                           </br>
             

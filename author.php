@@ -4,35 +4,19 @@
     <div class="hidden-xs hidden-sm col-md-12">
         
         <?php
-            //$bg_img = wp_get_attachment_image_src( get_post_thumbnail_id( $page->ID ), 'full' );
-            $gem_bg_img = '';
-
-//            if ($party_img == "Spring") {
-//                
-//                $bg_img = get_field('spring_bg_img', 'option');
-//                
-//            }
-//            if ($party_img == "Default") {
-//                
-//                $bg_img = get_field('default_bg_img', 'option');
-//                
-//            }
-//            if ($party_img == "Collegiate") {
-//                
-//                $bg_img = get_field('collegiate_bg_img', 'option');
-//                
-//            }
-
             
-            //echo $party_img;
-            //print_r($bg_img);
-
-// author meta
     //$author_store = get_the_author_meta( 'user_nicename' );
  
 $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 
-$auth_meta = get_the_author_meta('ID');
+$auth_meta = get_the_author_meta( $author );
+
+$store_link = '"/shop/?mygem=' . $curauth->display_name . '"';
+
+//http_redirect( $store_link , array("name" => "value"), true, HTTP_REDIRECT_PERM);
+
+wp_redirect( $store_link );
+exit;
 
 //$gem_profile_img = get_avatar( $curauth->ID );
 $gem_profile_img = get_field( 'photo' );
@@ -60,14 +44,16 @@ $gem_profile_img = get_field( 'photo' );
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
-            
-            
+        <?php print_r($auth_meta); ?>
+         
+        <div class="my-shop-area">
+            <a href="/shop/?mygem=<?php echo $curauth->display_name; ?>"><div class="shop-my-store">Shop My Store</div></a>   
+        </div>
         
-            
         
         <!-- start shopping items -->
         
-        <?php echo do_shortcode('[recent_products per_page="12" columns="4"]'); ?>
+        <?php //echo do_shortcode('[recent_products per_page="12" columns="4"]'); ?>
         
         <!-- end shopping items -->
             

@@ -77,12 +77,35 @@ $args = array(
 register_sidebar( $args );
 
 ////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Admin area
-////////////////////////////////////////////////////////
 
-//function tt_block_wp_admin() {
-//    if ( ! current_user_can( 'manage_options' )  && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
-//        wp_redirect( home_url() );
-//    }
-//}
-//add_action( 'admin_init', 'tt_block_wp_admin', 1 );
+add_action('init', 'gem_setcookie');
+
+// my_setcookie() set the cookie on the domain and directory WP is installed on
+function gem_setcookie(){
+  $path = parse_url(get_option('siteurl'), PHP_URL_PATH);
+  $host = parse_url(get_option('siteurl'), PHP_URL_HOST);
+  $expiry = strtotime('+1 month');
+  setcookie('gem_party', '0', $expiry, $path, $host);
+  /* more cookies */
+  //setcookie('my_cookie_name_2', 'my_cookie_value_2', $expiry, $path, $host);
+}
+/**
+ * Disable admin bar on the frontend of your website
+ * for subscribers.
+ */
+function themeblvd_disable_admin_bar() { 
+	if( ! current_user_can('edit_posts') )
+		add_filter('show_admin_bar', '__return_false');	
+}
+add_action( 'after_setup_theme', 'themeblvd_disable_admin_bar' );
+ 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// disable admin area
+function tt_redirect_admin(){
+	if ( ! current_user_can( 'edit_dashboard' ) ){
+		wp_redirect( site_url() );
+		exit;		
+	}
+}
+add_action( 'admin_init', 'tt_redirect_admin' );
+
+////////////////////////////////////////////////////////
