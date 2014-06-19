@@ -191,7 +191,7 @@ function gem_button1($atts, $content = null) {
         'color'  => '#a50050',
         'text'  => '#ffffff',
         'link'    => '#',
-        'float'    => 'left',
+        'float'    => 'none',
         'target'    => '',
         'class'    => '',
         'span' => 'y',
@@ -364,13 +364,20 @@ $rep = get_userdata( $my_rep_user_id );
 $rep_profile = get_user_meta($my_rep_user_id);
 $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
     
-    //print_r($rep_profile);
+$party_id = ($_COOKIE['gem_party']!='' ? $_COOKIE['gem_party'] : 'none');
+$party_name = get_the_title( $party_id );    
+    
+    //print_r($_COOKIE);
     
     return 
-        '<div class="gem-rep-wrap"><div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>' .
-        $rep->first_name . ' ' . $rep->last_name . ' ID# ' .$my_rep_id . '</br>' .
-        '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '<div>' . 
-        '<div class="rep_email"><a href="#">Email me</a></div>';
+        '<div class="gem-rep-wrap">'.
+            '<div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>' .
+            '<div class="gem-name">' . $rep->first_name . ' ' . $rep->last_name . ' ID# ' .$my_rep_id . '</div></br>' .
+            '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '</div>' .  
+            '<div class="rep_email"><a href="#">Email me</a></div>'.
+        '</div>'.
+            '<div class="party-id">Party: ' . $party_name . ':' . $party_id .'</div>';
+        
         
         
 }
@@ -614,11 +621,16 @@ if ( $the_query->have_posts() ) {
         $current_user = wp_get_current_user();
 		$author = get_the_author();
 		$author_id = the_author_meta( ID, $author );
+        
+        $party_id = $_COOKIE['gem_party'];
+        $party_name = get_the_title( $party_id );
+        
 		
 //HTML
         
      $output .= '<div class="contact-item"><a href="/account/my-contact/?gform_post_id=' . $post_id . '">' . $post_title . '</a>' .
-                '<span class="email">' . $contact_email . '</span></div>';   
+                '<span class="email">' . $contact_email . '</span></div>'.
+                '<div class="party-id>Party: ' . $party_name . '</div>';   
         
 
 	}

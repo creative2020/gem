@@ -1,9 +1,4 @@
-<?php 
-
-setcookie('gem_party', '88' );
-
-
-get_header(); ?>
+<?php get_header(); ?>
 
 <div id="party-header-wrap" class="row">
     <div class="hidden-xs hidden-sm col-md-12">
@@ -28,17 +23,7 @@ get_header(); ?>
                 
             }
             
-            $gem_party_ID = $_COOKIE['gem_party'];
             
-            echo $gem_party_ID;
-            
-            //setcookie("gemparty", $gem_party_ID, time()+3600);  /* expire in 1 hour */
-            
-            //wp_set_auth_cookie( $user_id, $remember, $secure )
-            
-            //echo $party_img;
-            //print_r($bg_img);
-
         ?>
         
         <div class="party-img" style="background: url('<?php echo $bg_img['url']; ?>') top right no-repeat;height:100px;">
@@ -60,7 +45,7 @@ get_header(); ?>
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
-       <?php print_r($_COOKIE); ?>
+       <?php //print_r($_COOKIE); ?>
         
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             

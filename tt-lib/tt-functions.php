@@ -78,34 +78,56 @@ register_sidebar( $args );
 
 ////////////////////////////////////////////////////////
 
-add_action('init', 'gem_setcookie');
 
-// my_setcookie() set the cookie on the domain and directory WP is installed on
-function gem_setcookie(){
-  $path = parse_url(get_option('siteurl'), PHP_URL_PATH);
-  $host = parse_url(get_option('siteurl'), PHP_URL_HOST);
-  $expiry = strtotime('+1 month');
-  setcookie('gem_party', '0', $expiry, $path, $host);
-  /* more cookies */
-  //setcookie('my_cookie_name_2', 'my_cookie_value_2', $expiry, $path, $host);
-}
-/**
- * Disable admin bar on the frontend of your website
- * for subscribers.
- */
-function themeblvd_disable_admin_bar() { 
-	if( ! current_user_can('edit_posts') )
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// disable admin area
+
+function tt_disable_admin_bar() { 
+	if( ! current_user_can('edit_dashboard') )
 		add_filter('show_admin_bar', '__return_false');	
 }
-add_action( 'after_setup_theme', 'themeblvd_disable_admin_bar' );
+add_action( 'after_setup_theme', 'tt_disable_admin_bar' );
  
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// disable admin area
+
 function tt_redirect_admin(){
 	if ( ! current_user_can( 'edit_dashboard' ) ){
-		wp_redirect( site_url() );
+		wp_redirect( site_url() . '/account' );
 		exit;		
 	}
 }
 add_action( 'admin_init', 'tt_redirect_admin' );
 
 ////////////////////////////////////////////////////////
+
+
+function tt_gem_party_id() {
+    
+    //$post = get_post();
+    //$post_type = get_post_type();
+    
+    //echo 'The post type is: ' . get_post_type( $post_id );
+    //echo 'The post type is: ' . get_post_type( 79 );
+    
+    //print_r($post);
+    setcookie('gem_party','4',time()+60*60*24*31);
+    
+//  if ($post_type == 'party'){
+//    echo 'this is a party';
+//        //$gem_party_id = $wp_query->post->ID;
+//    setcookie('gem_party', get_the_ID(),time()+60*60*24*31);
+//  }
+}
+add_action('init', 'tt_gem_party_id');
+
+
+////////////////////////////////////////////////////////
+
+
+function tt_print_acf() {
+    
+    $user_meta = get_user_meta(1);
+    print_r($user_meta);
+}
+add_action('admin_print_footer_scripts', 'tt_print_acf');
+
+
+

@@ -23,6 +23,7 @@ get_header(); ?>
                 $user = get_userdata( $user_ID );
                 $user_photo_id = $user_data[photo][0];
                 $user_photo_url = wp_get_attachment_url( $user_photo_id );
+                
                 $user_photo_img = '<img src="' . $user_photo_url . '">';
                 
                 //classes
@@ -33,8 +34,8 @@ get_header(); ?>
                 );
                 
                 // TEST arrays
-                //echo print_r($user) . '</br></br>';
-                //echo print_r($class) . '</br></br>';
+                //print_r($user_data) . '</br></br>';
+                //print_r($class) . '</br></br>';
                 ?>
                 <style>
                     .data-label {color:#888888;}
@@ -45,17 +46,19 @@ get_header(); ?>
                 </br>
                 
                 
-                <div class="<?php echo $class[row] ?>">
-                    <div class="<?php echo $class[label] ?>">My photo: </div>
-                    <div class="<?php echo $class[data] ?>"><?php echo $user_photo_img ?></div>
+                <div class="<?php echo $class[row] ?> pull-left">
+                    <div class="<?php echo $class[data] ?> pull-left"><img src="<?php echo $user_data[profile_pic][0] ?>"></div>
                 </div>        
                 <div class="<?php echo $class[row] ?>">
                     <div class="<?php echo $class[label] ?>">Name: </div>
                     <div class="<?php echo $class[data] ?>"><?php echo $user_data[first_name][0] ?> <?php echo $user_data[last_name][0] ?></div>
-                </div>
-                <div class="<?php echo $class[row] ?>">
                     <div class="<?php echo $class[label] ?>">Store URL: </div>
                     <div class="<?php echo $class[data] ?>">www.RockDarling.com/<?php echo $user->user_login ?></div>
+                    <div class="<?php echo $class[label] ?>">Phone: </div>
+                    <div class="<?php echo $class[data] ?>"><?php echo $user_data[gem_phone][0] ?></div>
+                </div>
+                <div class="<?php echo $class[row] ?>">
+                    
                 </div>
                        
                           </br>  
