@@ -26,6 +26,7 @@ register_nav_menus( array(
 	'section_links_2' => 'Section Links 2',
 	'section_links_3' => 'Section Links 3',
 	'section_links_4' => 'Section Links 4',
+    'social_media' => 'Social Media',
 ) );
 
 
@@ -98,36 +99,46 @@ add_action( 'admin_init', 'tt_redirect_admin' );
 
 ////////////////////////////////////////////////////////
 
-
-function tt_gem_party_id() {
-    
-    //$post = get_post();
-    //$post_type = get_post_type();
-    
-    //echo 'The post type is: ' . get_post_type( $post_id );
-    //echo 'The post type is: ' . get_post_type( 79 );
-    
-    //print_r($post);
-    setcookie('gem_party','4',time()+60*60*24*31);
-    
-//  if ($post_type == 'party'){
-//    echo 'this is a party';
-//        //$gem_party_id = $wp_query->post->ID;
-//    setcookie('gem_party', get_the_ID(),time()+60*60*24*31);
-//  }
-}
-add_action('init', 'tt_gem_party_id');
-
-
-////////////////////////////////////////////////////////
-
-
 function tt_print_acf() {
     
     $user_meta = get_user_meta(1);
-    print_r($user_meta);
+    //print_r($user_meta);
 }
 add_action('admin_print_footer_scripts', 'tt_print_acf');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom field
 
+// Hook in
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+    $party_id_8 = '';
+    $gem_party_id = '8';    
+    
+     $fields['order']['gem_party_id'] = array(
+        'label'     => __('Party ID', 'woocommerce'),
+    'placeholder'   => _x('', 'placeholder', 'woocommerce'),
+    'required'  => false,
+    'class'     => array('form-row-wide'),
+    'clear'     => true,
+    'type'     => text,
+     );
+
+    
+    
+    return $fields;
+}
+
+////////////////////////////////////////////////////////
+
+/**
+ * Display field value on the order edit page
+ */
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
+ 
+function my_custom_checkout_field_display_admin_order_meta($order){
+    echo '<p><strong>'.__('New Party ID').':</strong> ' . get_post_meta( $order->id, 'gem_party_id', true ) . '</p>';
+    echo '<p><strong>'.__('Gem ID').':</strong> ' . get_post_meta( $order->id, 'affiliate', true ) . '</p>';
+}
 

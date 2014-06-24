@@ -2,7 +2,7 @@
  * Theme Name: gem
  * Theme URI: http://2020creative.net
  * Description: A simple responsive theme based on the Bootstrap framework.
- * Version: 1.26
+ * Version: 1.27
  * Author: 2020 Creative, Inc.
  * Author URI: http://2020creative.net
  * Tags: gem
@@ -176,6 +176,14 @@ h1, .brand-teal {
 .nav-container {
     background-color:#f20075;
     border-top:1px solid #a50050;
+    height:50px;
+    overflow:hidden;
+}
+.menu-social-media-container {
+    height:50px;
+    overflow:hidden;
+    margin:0px;
+    padding:0px;
 }
 .navbar,
 .navbar-default .navbar-brand {
@@ -212,8 +220,44 @@ background-color: #a50050;
     color:white;
     background-color:#650031;
 }
-.nav > li.sm-twitter > a {
-    background-color:green;
+#menu-social-media li {
+    width:60px;
+    height:50px;
+    float:right;
+    list-style-type:none;
+    background-image:url(images/sprite-gem.png);
+    background-position:0 0;
+    margin:0px;
+}
+#menu-social-media li.twitter {
+    background-position:-60px 0px;
+}
+#menu-social-media li.twitter:hover {
+    background-position:-60px -50px;
+}
+#menu-social-media li.facebook {
+    background-position:0px 0px;
+}
+#menu-social-media li.facebook:hover {
+    background-position:0px -50px;
+}  
+#menu-social-media li.pinterest {
+    background-position:-120px 0px;
+}
+#menu-social-media li.pinterest:hover {
+    background-position:-120px -50px;
+} 
+#menu-social-media li.instagram {
+    background-position:-180px 0px;
+}
+#menu-social-media li.instagram:hover {
+    background-position:-180px -50px;
+}  
+#menu-social-media li > a {
+    width:60px;
+    height:50px;
+    display:block;
+    color:transparent;
 }
 .container {
     width:100%;

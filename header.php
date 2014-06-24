@@ -86,14 +86,31 @@
                     <div class="row">
 					<div class="collapse navbar-collapse navbar-responsive-collapse nav-container container">
 						<?php wp_bootstrap_main_nav(); // Adjust using Menus in Wordpress Admin ?>
-                        
-						<?php //if(of_get_option('search_bar', '1')) {?>
-						<form class="navbar-form navbar-right" role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-							<div class="form-group">
-								<input name="s" id="s" type="text" class="search-query form-control" autocomplete="off" placeholder="<?php _e('Search','wpbootstrap'); ?>" data-provide="typeahead" data-items="4" data-source='<?php echo $typeahead_data; ?>'>
-							</div>
-						</form>
-						<?php //} ?>
+                        <?php
+
+				$defaults = array(
+					'theme_location'  => 'social_media',
+					'menu'            => '',
+					'container'       => 'div',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => 'social-menu',
+					'menu_id'         => '',
+					'echo'            => true,
+					'fallback_cb'     => '',
+					'before'          => '',
+					'after'           => '',
+					'link_before'     => '',
+					'link_after'      => '',
+					'items_wrap'      => '<ul id="%1$s" class="%2$s pull-right">%3$s</ul>',
+					'depth'           => 0,
+					'walker'          => ''
+				);
+				
+				wp_nav_menu( $defaults );
+				
+				?>
+						
                         </div>
 					</div>
 		

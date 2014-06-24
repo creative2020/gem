@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php 
+
+$party_id = get_the_ID();
+
+setcookie("gem_party", $party_id, time()+3600*24*30, "/", "local.gem.2020creative.net", 0, 0);
+
+get_header(); ?>
 
 <div id="party-header-wrap" class="row">
     <div class="hidden-xs hidden-sm col-md-12">
@@ -22,6 +28,7 @@
                 $bg_img = get_field('collegiate_bg_img', 'option');
                 
             }
+    
             
             
         ?>
@@ -66,7 +73,7 @@
                 <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
             </div>
             
-            <?php dynamic_sidebar('products-main'); // Shop sidebar ?>			
+            <?php dynamic_sidebar('products-main'); // Shop sidebar ?>	
                         
         </div> <!-- end #sidebar -->
         

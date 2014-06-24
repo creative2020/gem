@@ -41,6 +41,8 @@ if($cat_obj)    {
     <div class="col-md-12">
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
+        
+     <?php //print_r($_COOKIE); ?>
 
 	<?php
 		/**

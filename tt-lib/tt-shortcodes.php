@@ -364,7 +364,7 @@ $rep = get_userdata( $my_rep_user_id );
 $rep_profile = get_user_meta($my_rep_user_id);
 $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
     
-$party_id = ($_COOKIE['gem_party']!='' ? $_COOKIE['gem_party'] : 'none');
+$party_id = $_COOKIE['gem_party'];
 $party_name = get_the_title( $party_id );    
     
     //print_r($_COOKIE);
@@ -376,7 +376,7 @@ $party_name = get_the_title( $party_id );
             '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '</div>' .  
             '<div class="rep_email"><a href="#">Email me</a></div>'.
         '</div>'.
-            '<div class="party-id">Party: ' . $party_name . ':' . $party_id .'</div>';
+            '<div class="party-id">Party: ' . $party_name .'</div>';
         
         
         
@@ -623,7 +623,8 @@ if ( $the_query->have_posts() ) {
 		$author_id = the_author_meta( ID, $author );
         
         $party_id = $_COOKIE['gem_party'];
-        $party_name = get_the_title( $party_id );
+        //$party_name = get_the_title( $party_id );
+        $party_name = 'hello';
         
 		
 //HTML
