@@ -2,7 +2,7 @@
  * Theme Name: gem
  * Theme URI: http://2020creative.net
  * Description: A simple responsive theme based on the Bootstrap framework.
- * Version: 1.25
+ * Version: 1.26
  * Author: 2020 Creative, Inc.
  * Author URI: http://2020creative.net
  * Tags: gem
@@ -76,13 +76,13 @@ h1, .brand-teal {
     min-height:100px;
     overflow:hidden;
 }
-@media (max-width: 767px) { /*open media*/
+@media (max-width: 899px) { /*open media*/
 .header-container {
     height:100px;
 }
 
 } /*close media*/
-.logo {
+.logo-x {
     width:50%;
     height:20%;
     max-width:600px;
@@ -99,7 +99,7 @@ h1, .brand-teal {
     position:35% 0;
     margin-left:10%;
 }
-.header {
+.header-2 {
     height:400px;
     width:120%;
     background-color:#b20056;
@@ -109,22 +109,33 @@ h1, .brand-teal {
     -ms-transform:rotate(-11deg); /* IE 9 */
     -webkit-transform:rotate(-11deg); /* Opera, Chrome, and Safari */
 }
+.header {
+    height:200px;
+    width:100%;
+    background-image:url(images/header-gem-1.png);
+    background-color:white;
+    background-repeat:no-repeat;
+    background-position:top center;
+    overflow:hidden;
+    
+}
 @media (min-width: 900px) and (max-width: 1200px) { /*open media*/
 .header {
-    margin:2% 0;
+    
 }
 }/*close media*/
 @media (min-width: 900px) and (max-width: 1000px) { /*open media*/
 .header {
-    margin:8% 0;
+    
 }
 }/*close media*/
 @media (max-width: 899px) { /*open media*/
 .header {
-    margin:9% 0;
+    background-position:center -400px;
+    height:100px;
 }
 }/*close media*/
-.tagline-group {
+.tagline-group-x {
     color:white;
     width:300px;
     height:auto;
@@ -137,7 +148,7 @@ h1, .brand-teal {
     z-index:2;
     float:left;
 }
-.tagline {
+.tagline-x {
     width:130px;
     padding:10px;
     background-color:#00b2a9;
@@ -145,7 +156,7 @@ h1, .brand-teal {
     text-align:center;
     
 }
-.tagline-2 {
+.tagline-2-x {
     width:106px;
     padding:10px;
     margin:-10px 0 0 55px;
@@ -153,7 +164,7 @@ h1, .brand-teal {
     z-index:3;
     text-align:center;
 }
-.tagline-3 {
+.tagline-3-x {
     width:93px;
     padding:10px;
     margin:-61px 0 0 144px;
@@ -200,6 +211,9 @@ background-color: #a50050;
 .nav > li > a:hover {
     color:white;
     background-color:#650031;
+}
+.nav > li.sm-twitter > a {
+    background-color:green;
 }
 .container {
     width:100%;

@@ -41,24 +41,6 @@
                     <div class="row">
                         <div class="header-container">
                             
-                            <div class="logo-container">
-                            
-                                <div class="logo"></div>
-                            
-                            </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            <div class="tagline-group hidden-xs">
-                                <div class="tagline">Earn an income</div>
-                                <div class="tagline-2">virtually</div>
-                                <div class="tagline-3">anywhere</div>
-                            </div>
                             <div class="header col-md-12"></div>
                         </div>
                     </div>
