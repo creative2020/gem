@@ -125,9 +125,23 @@ function custom_override_checkout_fields( $fields ) {
     'type'     => text,
      );
 
-    
-    
     return $fields;
+}
+/**
+* Process the checkout
+**/
+add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
+
+/**
+* Update the order meta with field value
+**/
+add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
+
+function my_custom_checkout_field_update_order_meta( $order_id ) {
+    
+    $gem_party_id = $_COOKIE['gem_party'];
+    
+if ($_POST['gem_party_id']) update_post_meta( $order_id, 'gem_party_id', esc_attr($_POST['gem_party_id']));
 }
 
 ////////////////////////////////////////////////////////
@@ -141,4 +155,5 @@ function my_custom_checkout_field_display_admin_order_meta($order){
     echo '<p><strong>'.__('New Party ID').':</strong> ' . get_post_meta( $order->id, 'gem_party_id', true ) . '</p>';
     echo '<p><strong>'.__('Gem ID').':</strong> ' . get_post_meta( $order->id, 'affiliate', true ) . '</p>';
 }
+////////////////////////////////////////////////////////
 
