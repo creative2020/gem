@@ -553,6 +553,7 @@ text-shadow: 0 -1px 0 rgba(0,0,0,.6);
 }
 #product-home ul.product_list_widget li img {
     width:90% !important;
+    max-width:150px !important;    
     text-align:center;
     background-color:white;
     float:left;

@@ -24,7 +24,7 @@ Template Name: Homepage
                         <h2>Host a Virtual Party</h2>
                         <p>Earn rewards</p>
                     </div></a>
-                    <a href="/become-a-gem/"><div class="col-sm-4 col-md-12 slider-info slider-info-last">
+                    <a href="/join-us/"><div class="col-sm-4 col-md-12 slider-info slider-info-last">
                         <h2>Join Us</h2>
                         <p>Become a Gem</p>
                     </div></a>
