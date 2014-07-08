@@ -106,12 +106,8 @@ function tt_print_acf() {
 }
 add_action('admin_print_footer_scripts', 'tt_print_acf');
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom field
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom fields
 
-
-/**
-* Update the order meta with field value
-**/
 add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
 
 function my_custom_checkout_field_update_order_meta( $order_id ) {
@@ -123,11 +119,8 @@ update_post_meta( $order_id, 'gem_party_id', $gpi);
 update_post_meta( $order_id, 'gem_rep_id', $gri);
 }
 
-////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom fields on order edit page
 
-/**
- * Display field value on the order edit page
- */
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
  
 function my_custom_checkout_field_display_admin_order_meta($order){
