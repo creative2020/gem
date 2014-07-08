@@ -108,29 +108,6 @@ add_action('admin_print_footer_scripts', 'tt_print_acf');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom field
 
-// Hook in
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
-
-// Our hooked in function - $fields is passed via the filter!
-function custom_override_checkout_fields( $fields ) {
-    $party_id_8 = '';
-    $gem_party_id = '8';    
-    
-     $fields['order']['gem_party_id'] = array(
-        'label'     => __('Party ID', 'woocommerce'),
-    'placeholder'   => _x('', 'placeholder', 'woocommerce'),
-    'required'  => false,
-    'class'     => array('form-row-wide'),
-    'clear'     => true,
-    'type'     => text,
-     );
-
-    return $fields;
-}
-/**
-* Process the checkout
-**/
-add_action('woocommerce_checkout_process', 'my_custom_checkout_field_process');
 
 /**
 * Update the order meta with field value
@@ -139,9 +116,11 @@ add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_u
 
 function my_custom_checkout_field_update_order_meta( $order_id ) {
     
-    $gem_party_id = $_COOKIE['gem_party'];
+    $gpi = $_COOKIE['gem_party'];
+    $gri = $_COOKIE['wp_affiliates'];
     
-if ($_POST['gem_party_id']) update_post_meta( $order_id, 'gem_party_id', esc_attr($_POST['gem_party_id']));
+update_post_meta( $order_id, 'gem_party_id', $gpi);
+update_post_meta( $order_id, 'gem_rep_id', $gri);
 }
 
 ////////////////////////////////////////////////////////
@@ -152,8 +131,13 @@ if ($_POST['gem_party_id']) update_post_meta( $order_id, 'gem_party_id', esc_att
 add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_checkout_field_display_admin_order_meta', 10, 1 );
  
 function my_custom_checkout_field_display_admin_order_meta($order){
-    echo '<p><strong>'.__('New Party ID').':</strong> ' . get_post_meta( $order->id, 'gem_party_id', true ) . '</p>';
-    echo '<p><strong>'.__('Gem ID').':</strong> ' . get_post_meta( $order->id, 'affiliate', true ) . '</p>';
+    echo '<p><strong>'.__('Gem Party ID').':</strong> ' . get_post_meta( $order->id, 'gem_party_id', true ) . '</p>';
+    echo '<p><strong>'.__('Gem Rep ID').':</strong> ' . get_post_meta( $order->id, 'gem_rep_id', true ) . '</p>';
 }
 ////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// t2
+
+
+
+////////////////////////////////////////////////////////

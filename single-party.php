@@ -3,6 +3,7 @@
 $party_id = get_the_ID();
 
 setcookie("gem_party", $party_id, time()+3600*24*30, "/", "local.gem.2020creative.net", 0, 0);
+setcookie("gem_party", $party_id, time()+3600*24*30, "/", "rockdarling.com", 0, 0);
 
 get_header(); ?>
 
