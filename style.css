@@ -2,7 +2,7 @@
  * Theme Name: gem
  * Theme URI: http://2020creative.net
  * Description: A simple responsive theme based on the Bootstrap framework.
- * Version: 1.29
+ * Version: 1.30
  * Author: 2020 Creative, Inc.
  * Author URI: http://2020creative.net
  * Tags: gem
@@ -58,6 +58,31 @@ h1, .brand-teal {
     height:2px;
     border-top:1px solid #ABABAB;
     margin:22px 0;
+}
+.sm {
+    font-size:1.0em;
+}
+.md {
+    font-size:1.5em;
+}
+.lg {
+    font-size:2.0em;
+}
+
+.rd-main-pink {
+    color:#a50050;
+}
+.rd-teal-accent {
+    color:#00b2a9;
+}
+.rd-dk-pink {
+    color:#b20056;
+}
+.rd-lt-pink {
+    color:#f20075;
+}
+.rd-dkdk-pink {
+    color:#650031;
 }
 
 /* ////////////////////////////////////////////////button colors */
@@ -672,6 +697,21 @@ li.widget {
 ul.product_list_widget {
     min-height:150px;
 }
+.sample {
+    font-size:1.1em !important;
+    color:#000 !important;
+    background-color:transparent;
+}
+code {
+    color:#000;
+    margin:0.5em 0 !important;
+    padding:0.5em !important;
+    display:block;
+}
+.sidebar-img-2 {
+    margin:1.0em 0;
+}
+
 /*
 colors
 @brand-primary  #428bca = #a50050 = gem1 - main pink

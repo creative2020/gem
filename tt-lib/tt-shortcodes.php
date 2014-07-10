@@ -6,7 +6,7 @@ URL: htp://2020creative.com
 //////////////////////////////////////////////////////// 2020 Shortcodes
 
 
-//////////////////////////////////////////////////////// TEST
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Post info
 add_shortcode( 'post_info', 'post_info' );
 function post_info ( $atts ) {
 
@@ -23,6 +23,65 @@ function post_info ( $atts ) {
 // code
 return $tt_post_content;    
 }
+////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Post img
+add_shortcode( 'post_img', 'post_img' );
+function post_img ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'id' => '',
+            'size' => 'thumbnail',
+            'icon' => '0',
+            'attr' => 'rock darling pic',
+		), $atts )
+	);
+    
+    $tt_post_img = wp_get_attachment_image( $id, $size, $icon, $attr );
+    
+// code
+return $tt_post_img;    
+}
+////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Sidebar image 2
+add_shortcode( 'sidebar_img2', 'sidebar_img2' );
+function sidebar_img2 ( $atts ) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+            'id' => '',
+            'width' => '150px',
+            'height' => '',
+            'attr' => 'rock darling pic',
+		), $atts )
+	);
+    
+    $id = get_the_ID();
+    $key = 'sidebar_img_2';
+    $url = get_post_custom_values($key, $id);
+    
+    if (!empty($url[0])) {
+        
+        $img = wp_get_attachment_url( $url[0] );
+        
+    }
+    
+    
+    //$img2 = '<img class="" src="http://rockdarling.com/wp-content/uploads/797.jpg" width="150" height="150">';
+    $output = '';//html ?>
+
+        <div class="sidebar-img-2"><img class="" src="<?php echo $img; ?>" width="" height=""></div>
+    
+        <?php //html
+// code
+return $output;    
+}
+////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////// Gem party list
 add_shortcode( 'gem_party_list', 'gem_party_list' );
 function gem_party_list ( $atts ) {
@@ -495,7 +554,64 @@ function rep_search_state ( $atts ) {
 <h2>Search by State</h2>
 <form id="rep-state" action="" method="get">
     <div class="form-group">
-        <input class="form-control" name="state" id="state" placeholder="State" value="<?php echo $state; ?>" type="text"></br>
+            
+        <select class="form-control" name="state" id="state" placeholder="State" value="State">
+            <option selected value="">State...</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select>
+    
+    
+    
+    </br>
         <input class="btn btn-primary" name="dosearch" type="submit" value="Search by State">
     </div>
 </form>
@@ -646,3 +762,43 @@ if ( $the_query->have_posts() ) {
 return $output;
 }
 //////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// Post info
+add_shortcode( 'rd_style', 'rd_style' );
+function rd_style ($atts, $content = null) {
+
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'class' => 'rd-main-pink',
+            'color' => '',
+            'size' => '', // lg, md, sm
+            'inline' => 'n', // y, n
+		), $atts )
+	);
+    if ($inline == 'n') {
+        $wrap = 'div';
+    }
+    if ($inline == 'y') {
+        $wrap = 'span';
+    }
+    
+    $output = '<' . $wrap . ' class="' . $class . ' ' . $size . '" style="color:' . $color . '">' . $content . '</' . $wrap . '>';
+        
+    return $output;
+}
+
+////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-6">
             
-                <p class="pull-right"><a href="http://2020creative.com" id="2020 Creative" title="website design">2020 Creative</a>
+                <p class="pull-right"><a href="#" id="" title="website design">RD</a>
                 <?php
                     $my_theme = wp_get_theme();
                     echo "v" . $my_theme->get( 'Version' );

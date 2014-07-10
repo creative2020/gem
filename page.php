@@ -21,6 +21,9 @@
                 } 
             ?>
             </div>
+            <div class="page-feature-img">
+                <?php echo do_shortcode( '[sidebar_img2]' ) ?>
+            </div>
             
             <?php dynamic_sidebar('sidebar1 '); // main sidebar ?>			
                         
