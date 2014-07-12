@@ -30,7 +30,33 @@ get_header(); ?>
                 
             }
     
-            
+// Check party start date
+
+// dev or live site?
+//$get_start = 20140607; //dev
+$get_start = get_field('party_start_date'); //live
+
+$today = getdate();
+$party_start = DateTime::createFromFormat('Ymd', $get_start);
+date_time_set($party_start, 23, 59);
+$party_end = $party_start;
+date_add($party_end, date_interval_create_from_date_string('7 days'));
+
+if ( $today < $party_end ) {
+    
+    $party_active = 'y';
+    $party_message = 'this party is rocking';
+    
+}
+if ( $today > $party_end ) {
+    
+    $party_active = 'n';
+    $party_message = 'party ended message';
+    
+}
+
+//echo 'start: ' . date_format($party_start, 'l M j \@\ g:i a') . '</br>';
+//echo 'end: ' . date_format($party_end, 'l M j \@\ g:i a') . '</br>';
             
         ?>
         
@@ -53,16 +79,30 @@ get_header(); ?>
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
+        <?php echo the_date('Y/m/d'); ?>
+        
        <?php //print_r($_COOKIE); ?>
         
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
             
         
-            <?php the_content(); ?>
+            <div class="m2"><?php the_content(); ?></div>
         
         <!-- start shopping items -->
         
-        <?php echo do_shortcode('[recent_products per_page="12" columns="4"]'); ?>
+<?php 
+if ($party_active == 'n') {
+
+    echo do_shortcode('[post_info id="2558"]');
+    
+}
+if ($party_active == 'y') {
+    
+    echo do_shortcode('[recent_products per_page="12" columns="4"]');
+    
+}
+
+?>
         
         <!-- end shopping items -->
             
@@ -70,9 +110,16 @@ get_header(); ?>
         
         <div id="sidebar" class="col-md-3">
                     
-            <div class="pull-left">
-                <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
-            </div>
+<?php   if ($party_active == 'y') {
+    
+?> <!-- html -->
+        
+    <div class="party-message-wrap">
+        <span class="party-message"><?php echo 'Hurry, this party ends: </br><strong>' . date_format($party_end, 'l M j \@\ g:i a') ?></strong></span>
+    </div>
+
+<?php } ?> <!-- html -->
+        
             
             <?php dynamic_sidebar('products-main'); // Shop sidebar ?>	
                         

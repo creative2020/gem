@@ -790,7 +790,89 @@ function rd_style ($atts, $content = null) {
 
 ////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////// Gem party orders list
+add_shortcode( 'gem_party_orders', 'gem_party_orders' );
+function gem_party_orders ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'current',
+            'gem_id' => '',
+			'list' => 'n',
+		), $atts )
+	);
+
+/////////////////////////////////////// Variables
+$user_ID = get_current_user_id();
+$user_data = get_user_meta( $user_ID );
+
+/////////////////////////////////////// All Query    
+if ($name == 'all') {
+	// The Query
+$args = array(
+	'post_type' => 'shop_order',
+	'post_status' => 'publish',
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+/////////////////////////////////////// Current Author Query
+if ($name == 'current') {
+	// The Query
+$args = array(
+	'post_type' => 'shop_order',
+	'post_status' => 'publish',
+    'author' => $user_ID,
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+    
+global $post;
+    
+    
+// top
+$output .= '<table class="table table-striped">';
+$output .= '<tr><td>Order ID</td><td>Status</td><td>Party ID</td><td>Last Name</td></tr>';
+    
+// The Loop
+if ( $the_query->have_posts() ) {
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		// pull meta for each post
+		$post_id = get_the_ID();
+		$permalink = get_permalink( $id );
+        $post_info = get_post( $post_id );
+        $post_meta = get_post_meta( $post_id );
+        $order_pid = get_post_field( 'gem_party_id', $post_id );
+		
+//HTML
+        //print_r($post_meta); 
+        
+        $output .= '<tr><td><a href="#">' . $post_id . '</a></td><td>' . $post_info->comment_status . '</td><td>' . $post_info-> gem_party_id . '</td><td>' . $post_info->_billing_last_name . '</td></tr>';
+
+            
+	}
+} else {
+	// no posts found
+	echo '<h2>No Active Gem Parties found</h2>';
+}
+    $output .= '</table>';
+    
+/* Restore original Post Data */
+wp_reset_postdata();
+return $output;
+}
+//////////////////////////////////////////////////////////////
 
 
 
