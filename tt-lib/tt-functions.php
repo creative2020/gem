@@ -134,3 +134,40 @@ function my_custom_checkout_field_display_admin_order_meta($order){
 add_theme_support( 'woocommerce' );
 
 ////////////////////////////////////////////////////////
+
+//hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_topics_hierarchical_taxonomy', 0 );
+
+//create a custom taxonomy name it topics for your posts
+
+function create_topics_hierarchical_taxonomy() {
+
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+
+  $labels = array(
+    'name' => _x( 'Type', 'taxonomy general name' ),
+    'singular_name' => _x( 'Type', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Type' ),
+    'all_items' => __( 'All Type' ),
+    'parent_item' => __( 'Parent Type' ),
+    'parent_item_colon' => __( 'Parent Type:' ),
+    'edit_item' => __( 'Edit Type' ), 
+    'update_item' => __( 'Update Type' ),
+    'add_new_item' => __( 'Add New Type' ),
+    'new_item_name' => __( 'New Type Name' ),
+    'menu_name' => __( 'Type' ),
+  ); 	
+
+// Now register the taxonomy
+
+  register_taxonomy('marketing-type',array('marketing'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'type' ),
+  ));
+
+}

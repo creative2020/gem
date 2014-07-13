@@ -10,7 +10,6 @@ namespace TwentyTwenty\TTcpt;
 
 ////////////////////////////////////////////////////////
 
-
 class RandomClass {
     
     public function create_content_type($options) {
@@ -77,58 +76,18 @@ class ContentType {
         );
     }
 }
-$gems = new ContentType('gem', array(), array('plural_name' => 'gems'));
-$gems = new ContentType('host', array(), array('plural_name' => 'hosts'));
+//$gems = new ContentType('gem', array(), array('plural_name' => 'gems'));
+//$gems = new ContentType('host', array(), array('plural_name' => 'hosts'));
 $gems = new ContentType('party', array(), array('plural_name' => 'parties'));
-$gems = new ContentType('contact', array(), array('plural_name' => 'contacts'));
+//$gems = new ContentType('contact', array(), array('plural_name' => 'contacts'));
 $gems = new ContentType('faq', array(), array('plural_name' => 'faqs'));
+$gems = new ContentType('marketing', array(), array('plural_name' => 'marketing'));
     
     
 //////////////////////////////////////////////////////////// Taxonomies
 
-/*
-// Register Custom Taxonomy
-function taxhelp() {
 
-	$labels = array(
-		'name'                       => 'Help and FAQ\'s',
-		'singular_name'              => 'Help and FAQ',
-		'menu_name'                  => 'Help and FAQ',
-		'all_items'                  => 'All Items',
-		'parent_item'                => 'Parent Item',
-		'parent_item_colon'          => 'Parent Item:',
-		'new_item_name'              => 'New Item Name',
-		'add_new_item'               => 'Add New Item',
-		'edit_item'                  => 'Edit Item',
-		'update_item'                => 'Update Item',
-		'separate_items_with_commas' => 'Separate items with commas',
-		'search_items'               => 'Search Items',
-		'add_or_remove_items'        => 'Add or remove items',
-		'choose_from_most_used'      => 'Choose from the most used items',
-		'not_found'                  => 'Not Found',
-	);
-	$rewrite = array(
-		'slug'                       => 'help',
-		'with_front'                 => true,
-		'hierarchical'               => false,
-	);
-	$args = array(
-		'labels'                     => $labels,
-		'hierarchical'               => true,
-		'public'                     => true,
-		'show_ui'                    => true,
-		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
-		'rewrite'                    => $rewrite,
-	);
-	register_taxonomy( 'taxhelp', array( 'faq' ), $args );
 
-}
-
-// Hook into the 'init' action
-add_action( 'init', 'help', 0 );    
-*/
     
 
 ////////////////////////////////////////////////////////////////////////// Roles

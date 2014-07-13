@@ -889,7 +889,83 @@ return $output;
 }
 //////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////// Marketing center
+add_shortcode( 'marketing_center', 'marketing_center' );
+function marketing_center ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+			'list' => 'n',
+		), $atts )
+	);
+
+/////////////////////////////////////// Variables
+
+
+/////////////////////////////////////// All Query    
+if ($name == 'all') {
+	// The Query
+$args = array(
+	'post_type' => 'marketing',
+	'post_status' => 'publish',
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+/////////////////////////////////////// loop
+   
+    
+global $post;
+// top
+  
+//print_r($the_query);    
+    
+$output .= '<div class="row">';    
+    
+// The Loop
+if ( $the_query->have_posts() ) {
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		// pull meta for each post
+		$post_id = get_the_ID();
+        $tt_post = get_post();
+		$permalink = get_permalink( $id );
+        
+        if ( has_post_thumbnail() ) {
+            $size = 'thumbnail';
+            $attr = '';
+        $tt_thumb = get_the_post_thumbnail( $post_id, $size, $attr );
+        }
+		        
+//HTML
+        
+        $output .=  '<div class="col-md-4">'.
+                        '<div class="mthumb">'. $tt_thumb .'</div>'.
+                    '</div>'.
+                    '<div class="col-md-8">'.
+                        '<h3 class="marketing-title">'. $tt_post->post_title .'</h3>'.
+                        '<div class="mcontent">'. $tt_post->post_content .'</div>'.
+                    '</div>';
+
+
+	}
+} else {
+	// no posts found
+	echo '<h2>None found</h2>';
+}
+    
+$output .= '</div>';
+    
+/* Restore original Post Data */
+wp_reset_postdata();
+return $output;
+}
 
 
 
