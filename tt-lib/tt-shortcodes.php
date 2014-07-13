@@ -806,20 +806,12 @@ function gem_party_orders ( $atts ) {
 /////////////////////////////////////// Variables
 $user_ID = get_current_user_id();
 $user_data = get_user_meta( $user_ID );
+$user_info = get_userdata($user_ID);
 
-/////////////////////////////////////// All Query    
-if ($name == 'all') {
-	// The Query
-$args = array(
-	'post_type' => 'shop_order',
-	'post_status' => 'publish',
-	'order' => 'ASC',
-	'posts_per_page'=> -1
-);
-$the_query = new WP_Query( $args );
-} else { 
-	//nothing
-	}
+/////////////////////////////////////// Admin message
+if ( current_user_can('manage_options') ) {
+ echo '<div class="message">You are logged in as an admin</div>';
+}    
     
 /////////////////////////////////////// Current Author Query
 if ($name == 'current') {
@@ -827,7 +819,29 @@ if ($name == 'current') {
 $args = array(
 	'post_type' => 'shop_order',
 	'post_status' => 'publish',
-    'author' => $user_ID,
+	'order' => 'ASC',
+	'posts_per_page'=> -1,
+    'meta_query' => array(
+		array(
+			'key' => 'gem_rep_id',
+			'value' => $user_ID,
+			'compare' => 'IN'
+		)
+	)
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+ 
+/////////////////////////////////////// Admin user gets all orders
+    
+if ( $user_info->roles = 'administrator') {    
+
+	// The Query
+$args = array(
+	'post_type' => 'shop_order',
+	'post_status' => 'publish',
 	'order' => 'ASC',
 	'posts_per_page'=> -1
 );
@@ -835,14 +849,14 @@ $the_query = new WP_Query( $args );
 } else { 
 	//nothing
 	}
-    
+        
     
 global $post;
     
     
 // top
 $output .= '<table class="table table-striped">';
-$output .= '<tr><td>Order ID</td><td>Status</td><td>Party ID</td><td>Last Name</td></tr>';
+$output .= '<tr><td>Order ID</td><td>Gem ID</td><td>Status</td><td>Party ID</td><td>Last Name</td><td>Amount</td></tr>';
     
 // The Loop
 if ( $the_query->have_posts() ) {
@@ -853,12 +867,13 @@ if ( $the_query->have_posts() ) {
 		$permalink = get_permalink( $id );
         $post_info = get_post( $post_id );
         $post_meta = get_post_meta( $post_id );
-        $order_pid = get_post_field( 'gem_party_id', $post_id );
+        $order_gpi = get_post_field( 'gem_party_id', $post_id );
+        $order_gri = get_post_field( 'gem_rep_id', $post_id );
 		
 //HTML
         //print_r($post_meta); 
         
-        $output .= '<tr><td><a href="#">' . $post_id . '</a></td><td>' . $post_info->comment_status . '</td><td>' . $post_info-> gem_party_id . '</td><td>' . $post_info->_billing_last_name . '</td></tr>';
+        $output .= '<tr><td>' . $post_id . '</td><td>' . $post_info->gem_rep_id . '</td><td>' . $post_info->comment_status . '</td><td>' . $post_info->gem_party_id . '</td><td>' . $post_info->_billing_last_name . '</td><td>' . $post_info->_order_total . '</td></tr>';
 
             
 	}
