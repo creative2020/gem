@@ -926,7 +926,7 @@ global $post;
   
 //print_r($the_query);    
     
-$output .= '<div class="row">';    
+    
     
 // The Loop
 if ( $the_query->have_posts() ) {
@@ -934,6 +934,7 @@ if ( $the_query->have_posts() ) {
 		$the_query->the_post();
 		// pull meta for each post
 		$post_id = get_the_ID();
+        $content = get_the_content();
         $tt_post = get_post();
 		$permalink = get_permalink( $id );
         
@@ -944,15 +945,15 @@ if ( $the_query->have_posts() ) {
         }
 		        
 //HTML
-        
+        $output .= '<div class="row marketing">';
         $output .=  '<div class="col-md-4">'.
                         '<div class="mthumb">'. $tt_thumb .'</div>'.
                     '</div>'.
                     '<div class="col-md-8">'.
                         '<h3 class="marketing-title">'. $tt_post->post_title .'</h3>'.
-                        '<div class="mcontent">'. $tt_post->post_content .'</div>'.
+                        '<div class="mcontent">'. $content .'</div>'.
                     '</div>';
-
+        $output .= '</div>';
 
 	}
 } else {
@@ -960,7 +961,7 @@ if ( $the_query->have_posts() ) {
 	echo '<h2>None found</h2>';
 }
     
-$output .= '</div>';
+
     
 /* Restore original Post Data */
 wp_reset_postdata();

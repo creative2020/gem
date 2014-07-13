@@ -19,6 +19,9 @@ require_once ('tt-shortcodes.php');
 // CPT's
 require_once ('tt-cpt.php');
 
+add_filter( 'the_excerpt', 'shortcode_unautop');
+add_filter( 'the_excerpt', 'do_shortcode');
+
 //////////////////////////////////////////////////////// Menus
 
 register_nav_menus( array(
