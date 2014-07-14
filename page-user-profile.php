@@ -86,9 +86,14 @@ get_header(); ?>
 
         <div id="sidebar" class="col-md-4">
                     
-            <div class="pull-left">
-                <img src="<?php echo of_get_option( 'gem_icon', 'no entry' ); ?>">
-            </div>
+            <?php 
+                if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+                    echo '<div class="page-feature-img">';
+                  the_post_thumbnail('large');
+                    echo '</div>';
+                    echo do_shortcode( '[sidebar_img2]' );
+                } 
+            ?>
             
             <?php get_sidebar('sidebar1'); // sidebar ?>			
                         

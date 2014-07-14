@@ -175,8 +175,8 @@ return $output;
 //////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////// FAQ list
-add_shortcode( 'help', 'help' );
-function help ( $atts ) {
+add_shortcode( 'help_faq', 'help_faq' );
+function help_faq ( $atts ) {
 
 	// Attributes
 	extract( shortcode_atts(
@@ -219,17 +219,14 @@ if ( $the_query->have_posts() ) {
 		$question = get_the_title();
         $answer = get_field( "answer" );
 		
-		$edit_link_url = get_edit_post_link($post->ID);
-		$edit_link = '<span class="edit-pencil-link"><a href="' . $edit_link_url . '"><i class="fa fa-pencil"></i></a></span>';
-		
 // set variables
         
 //HTML
         
-        $output .= '<ul>'.
-        			'<li class="question">' . $question . '</li>'.
-        			'<li class="answer">' . $answer . '</li>'.
-        			'</ul>';
+        $output .= '<div class"faq-wrap">'.
+        			'<h4 class="question">' . $question . '</h4>'.
+        			'<p class="answer">' . $answer . '</p>'.
+        			'</div>';
 
 
 	}
@@ -806,20 +803,12 @@ function gem_party_orders ( $atts ) {
 /////////////////////////////////////// Variables
 $user_ID = get_current_user_id();
 $user_data = get_user_meta( $user_ID );
+$user_info = get_userdata($user_ID);
 
-/////////////////////////////////////// All Query    
-if ($name == 'all') {
-	// The Query
-$args = array(
-	'post_type' => 'shop_order',
-	'post_status' => 'publish',
-	'order' => 'ASC',
-	'posts_per_page'=> -1
-);
-$the_query = new WP_Query( $args );
-} else { 
-	//nothing
-	}
+/////////////////////////////////////// Admin message
+if ( current_user_can('manage_options') ) {
+ echo '<div class="message">You are logged in as an admin</div>';
+}    
     
 /////////////////////////////////////// Current Author Query
 if ($name == 'current') {
@@ -827,7 +816,29 @@ if ($name == 'current') {
 $args = array(
 	'post_type' => 'shop_order',
 	'post_status' => 'publish',
-    'author' => $user_ID,
+	'order' => 'ASC',
+	'posts_per_page'=> -1,
+    'meta_query' => array(
+		array(
+			'key' => 'gem_rep_id',
+			'value' => $user_ID,
+			'compare' => 'IN'
+		)
+	)
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+ 
+/////////////////////////////////////// Admin user gets all orders
+    
+if ( $user_info->roles = 'administrator') {    
+
+	// The Query
+$args = array(
+	'post_type' => 'shop_order',
+	'post_status' => 'publish',
 	'order' => 'ASC',
 	'posts_per_page'=> -1
 );
@@ -835,14 +846,14 @@ $the_query = new WP_Query( $args );
 } else { 
 	//nothing
 	}
-    
+        
     
 global $post;
     
     
 // top
 $output .= '<table class="table table-striped">';
-$output .= '<tr><td>Order ID</td><td>Status</td><td>Party ID</td><td>Last Name</td></tr>';
+$output .= '<tr><td>Order ID</td><td>Gem ID</td><td>Status</td><td>Party ID</td><td>Last Name</td><td>Amount</td></tr>';
     
 // The Loop
 if ( $the_query->have_posts() ) {
@@ -853,12 +864,13 @@ if ( $the_query->have_posts() ) {
 		$permalink = get_permalink( $id );
         $post_info = get_post( $post_id );
         $post_meta = get_post_meta( $post_id );
-        $order_pid = get_post_field( 'gem_party_id', $post_id );
+        $order_gpi = get_post_field( 'gem_party_id', $post_id );
+        $order_gri = get_post_field( 'gem_rep_id', $post_id );
 		
 //HTML
         //print_r($post_meta); 
         
-        $output .= '<tr><td><a href="#">' . $post_id . '</a></td><td>' . $post_info->comment_status . '</td><td>' . $post_info-> gem_party_id . '</td><td>' . $post_info->_billing_last_name . '</td></tr>';
+        $output .= '<tr><td>' . $post_id . '</td><td>' . $post_info->gem_rep_id . '</td><td>' . $post_info->comment_status . '</td><td>' . $post_info->gem_party_id . '</td><td>' . $post_info->_billing_last_name . '</td><td>' . $post_info->_order_total . '</td></tr>';
 
             
 	}
@@ -874,7 +886,85 @@ return $output;
 }
 //////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////// Marketing center
+add_shortcode( 'marketing_center', 'marketing_center' );
+function marketing_center ( $atts ) {
 
+	// Attributes
+	extract( shortcode_atts(
+		array(
+			'name' => 'all',
+			'list' => 'n',
+		), $atts )
+	);
+
+/////////////////////////////////////// Variables
+
+
+/////////////////////////////////////// All Query    
+if ($name == 'all') {
+	// The Query
+$args = array(
+	'post_type' => 'marketing',
+	'post_status' => 'publish',
+	'order' => 'ASC',
+	'posts_per_page'=> -1
+);
+$the_query = new WP_Query( $args );
+} else { 
+	//nothing
+	}
+    
+/////////////////////////////////////// loop
+   
+    
+global $post;
+// top
+  
+//print_r($the_query);    
+    
+    
+    
+// The Loop
+if ( $the_query->have_posts() ) {
+	while ( $the_query->have_posts() ) {
+		$the_query->the_post();
+		// pull meta for each post
+		$post_id = get_the_ID();
+        $content = get_the_content();
+        $excerpt = get_the_excerpt();
+        $tt_post = get_post();
+		$permalink = get_permalink( $id );
+        
+        if ( has_post_thumbnail() ) {
+            $size = 'medium';
+            $attr = '';
+        $tt_thumb = get_the_post_thumbnail( $post_id, $size, $attr );
+        }
+		        
+//HTML
+        $output .= '<div class="row marketing">';
+        $output .=  '<div class="col-md-4">'.
+                        '<div class="mthumb">'. $tt_thumb .'</div>'.
+                    '</div>'.
+                    '<div class="col-md-8">'.
+                        '<h3 class="marketing-title">'. $tt_post->post_title .'</h3>'.
+                        '<div class="mcontent">'. $content .'</div>'.
+                    '</div>';
+        $output .= '</div>';
+
+	}
+} else {
+	// no posts found
+	echo '<h2>None found</h2>';
+}
+    
+
+    
+/* Restore original Post Data */
+wp_reset_postdata();
+return $output;
+}
 
 
 

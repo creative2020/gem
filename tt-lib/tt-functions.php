@@ -135,6 +135,7 @@ add_theme_support( 'woocommerce' );
 
 ////////////////////////////////////////////////////////
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// SSL pages
 function tt_force_page_ssl( $permalink, $post, $leavename ) {
 
@@ -174,3 +175,62 @@ function tt_ssl_template_redirect() {
 
 add_action( 'template_redirect', 'tt_ssl_template_redirect', 1 );
 
+=======
+//hook into the init action and call create_book_taxonomies when it fires
+add_action( 'init', 'create_topics_hierarchical_taxonomy', 0 );
+
+//create a custom taxonomy name it topics for your posts
+
+function create_topics_hierarchical_taxonomy() {
+
+// Add new taxonomy, make it hierarchical like categories
+//first do the translations part for GUI
+
+  $labels = array(
+    'name' => _x( 'Type', 'taxonomy general name' ),
+    'singular_name' => _x( 'Type', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Type' ),
+    'all_items' => __( 'All Type' ),
+    'parent_item' => __( 'Parent Type' ),
+    'parent_item_colon' => __( 'Parent Type:' ),
+    'edit_item' => __( 'Edit Type' ), 
+    'update_item' => __( 'Update Type' ),
+    'add_new_item' => __( 'Add New Type' ),
+    'new_item_name' => __( 'New Type Name' ),
+    'menu_name' => __( 'Type' ),
+  ); 	
+
+// Now register the taxonomy
+
+  register_taxonomy('marketing-type',array('marketing'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'type' ),
+  ));
+
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// login
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/tt-lib/img/site-login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// login
+
+function tt_wooemail_header() { 
+    
+    echo '<img src="https://s3-us-west-2.amazonaws.com/rockdarling.com/email+tpl/email-header.png" width="100%">';
+        
+}
+add_action( 'woocommerce_email_before_order_table', 'tt_wooemail_header' );
+
+/////////////////////////////////////////////////////////

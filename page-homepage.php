@@ -135,10 +135,10 @@ Template Name: Homepage
                         </div></a>
                     </div>
                     <div class="col-md-4 hidden-xs hidden-sm video-box" style="background-image:url(<?php echo $video_3_img['sizes']['medium']; ?>);">
-                        <a href="#" data-toggle="modal" data-target="#myModal-3" class="video-link">
+                        <a href="/about-rock-darling" class="video-link">
                             
                         <div class="video-play">
-                            <i class="fa fa-play-circle-o gem-play"></i>
+                            <i class="fa fa-play-circle-o gem-play" style="color:transparent;"></i>
                         </div>
                         
                         <div class="video-headline">
