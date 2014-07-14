@@ -19,9 +19,6 @@ require_once ('tt-shortcodes.php');
 // CPT's
 require_once ('tt-cpt.php');
 
-add_filter( 'the_excerpt', 'shortcode_unautop');
-add_filter( 'the_excerpt', 'do_shortcode');
-
 //////////////////////////////////////////////////////// Menus
 
 register_nav_menus( array(
@@ -174,3 +171,25 @@ function create_topics_hierarchical_taxonomy() {
   ));
 
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// login
+
+function my_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/tt-lib/img/site-login-logo.png);
+            padding-bottom: 30px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// login
+
+function tt_wooemail_header() { 
+    
+    echo '<img src="https://s3-us-west-2.amazonaws.com/rockdarling.com/email+tpl/email-header.png" width="100%">';
+        
+}
+add_action( 'woocommerce_email_before_order_table', 'tt_wooemail_header' );
+
+/////////////////////////////////////////////////////////

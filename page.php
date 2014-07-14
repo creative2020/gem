@@ -14,16 +14,16 @@
         
         <div id="sidebar" class="col-md-4">
                     
-            <div class="page-feature-img">
+            
             <?php 
                 if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
+                    echo '<div class="page-feature-img">';
                   the_post_thumbnail('large');
+                    echo '</div>';
+                    echo do_shortcode( '[sidebar_img2]' );
                 } 
             ?>
-            </div>
-            <div class="page-feature-img">
-                <?php echo do_shortcode( '[sidebar_img2]' ) ?>
-            </div>
+                        
             
             <?php dynamic_sidebar('sidebar1 '); // main sidebar ?>			
                         

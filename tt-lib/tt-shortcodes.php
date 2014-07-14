@@ -175,8 +175,8 @@ return $output;
 //////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////// FAQ list
-add_shortcode( 'help', 'help' );
-function help ( $atts ) {
+add_shortcode( 'help_faq', 'help_faq' );
+function help_faq ( $atts ) {
 
 	// Attributes
 	extract( shortcode_atts(
@@ -219,17 +219,14 @@ if ( $the_query->have_posts() ) {
 		$question = get_the_title();
         $answer = get_field( "answer" );
 		
-		$edit_link_url = get_edit_post_link($post->ID);
-		$edit_link = '<span class="edit-pencil-link"><a href="' . $edit_link_url . '"><i class="fa fa-pencil"></i></a></span>';
-		
 // set variables
         
 //HTML
         
-        $output .= '<ul>'.
-        			'<li class="question">' . $question . '</li>'.
-        			'<li class="answer">' . $answer . '</li>'.
-        			'</ul>';
+        $output .= '<div class"faq-wrap">'.
+        			'<h4 class="question">' . $question . '</h4>'.
+        			'<p class="answer">' . $answer . '</p>'.
+        			'</div>';
 
 
 	}
@@ -935,11 +932,12 @@ if ( $the_query->have_posts() ) {
 		// pull meta for each post
 		$post_id = get_the_ID();
         $content = get_the_content();
+        $excerpt = get_the_excerpt();
         $tt_post = get_post();
 		$permalink = get_permalink( $id );
         
         if ( has_post_thumbnail() ) {
-            $size = 'thumbnail';
+            $size = 'medium';
             $attr = '';
         $tt_thumb = get_the_post_thumbnail( $post_id, $size, $attr );
         }
