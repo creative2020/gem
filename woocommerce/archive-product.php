@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <?php
 /**
  * The Template for displaying product archives, including the main shop page which is a post type archive.
@@ -67,10 +73,14 @@ if($cat_obj)    {
 <div id="page-wrap" class="row">
     
     <div class="col-md-12">
+        
+        
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
-     <?php //print_r($_COOKIE); ?>
+     <?php echo $_SESSION['gemses']; ?>
+        <?php echo $_GET['gemses']; ?>
+        
 
 	<?php
 		/**

@@ -196,4 +196,22 @@ add_action( 'woocommerce_email_before_order_table', 'tt_wooemail_header' );
 
 /////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////// trying a fix for session/cookie problem
 
+add_filter('wc_session_expiring' , array('WoocommerceLicenseAPI', 'filter_ExtendSessionExpiring') );
+
+add_filter('wc_session_expiration' , array('WoocommerceLicenseAPI', 'filter_ExtendSessionExpired') );
+
+ 
+
+static function filter_ExtendSessionExpiring($seconds) {
+
+return (60 * 60 * 24 * 8) - (60 * 60);
+
+}
+
+static function filter_ExtendSessionExpired($seconds) {
+
+return 60 * 60 * 24 * 8;
+
+}
