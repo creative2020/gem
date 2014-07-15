@@ -135,29 +135,6 @@ add_theme_support( 'woocommerce' );
 
 ////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////// SSL pages #2
-
-function tt_ssl_template_redirect() {
-  if ( is_page( 44 ) && ! is_ssl() ) {
-    if ( 0 === strpos($_SERVER['REQUEST_URI'], 'http') ) {
-      wp_redirect(preg_replace('|^http://|', 'https://', $_SERVER['REQUEST_URI']), 301 );
-      exit();
-    } else {
-      wp_redirect('https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
-      exit();
-    }
-  } else if ( !is_page( 44 ) && is_ssl() && !is_admin() ) {
-    if ( 0 === strpos($_SERVER['REQUEST_URI'], 'http') ) {
-      wp_redirect(preg_replace('|^https://|', 'http://', $_SERVER['REQUEST_URI']), 301 );
-      exit();
-    } else {
-      wp_redirect('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], 301 );
-      exit();
-    }
-  }
-}
-
-add_action( 'template_redirect', 'tt_ssl_template_redirect', 1 );
 
 ////////////////////////////////////////////////////////
 
@@ -221,3 +198,5 @@ function tt_wooemail_header() {
 add_action( 'woocommerce_email_before_order_table', 'tt_wooemail_header' );
 
 /////////////////////////////////////////////////////////
+
+
