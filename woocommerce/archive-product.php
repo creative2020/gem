@@ -33,8 +33,36 @@ if($cat_obj)    {
         $image = wp_get_attachment_url( $thumbnail_id );
 ?>
         <div class="rd-category-wrap">
-            <div class="rd-category-img" style="background: url('<?php echo $image; ?>') top right no-repeat;height:100px;"></div>
-        </div>    
+            
+            <div class="rd-category-img" style="background: url('<?php echo $image; ?>') top right no-repeat;height:100px;">
+            <div class="col-md-offset-1">
+            <h1 class="party-title pull-left">
+                    
+            <?php 
+                if ( !empty( $_COOKIE['wp_affiliates'] ) ) {
+                    
+                    $my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : 'Guest');
+                    $my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
+                    $rep = get_userdata( $my_rep_user_id );
+                    $rep_profile = get_user_meta($my_rep_user_id);
+                    $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
+
+                    echo $rep->user_nicename . '\'s Shop'; 
+            
+                } else {
+                    
+                    echo 'Shop';
+                    
+                };
+            
+            ?></h1>
+            </div>
+            
+            
+            
+            
+            </div>
+        </div>  
 
 <div id="page-wrap" class="row">
     
