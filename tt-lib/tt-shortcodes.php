@@ -421,13 +421,17 @@ $rep_profile = get_user_meta($my_rep_user_id);
 $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
     
 $party_id = $_COOKIE['gem_party'];
-$party_name = get_the_title( $party_id );    
+$party_name = get_the_title( $party_id );
+    
+    if (!empty($rep_photo)) {
+        $rep_thumb = '<div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>';
+    };
     
     //print_r($_COOKIE);
     
     return 
         '<div class="gem-rep-wrap">'.
-            '<div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>' .
+             $rep_thumb .
             '<div class="gem-name">' . $rep->first_name . ' ' . $rep->last_name . ' ID# ' .$my_rep_id . '</div></br>' .
             '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '</div>' .  
             '<div class="rep_email"><a href="#">Email me</a></div>'.
