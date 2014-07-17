@@ -28,8 +28,8 @@ get_header(); ?>
                 
                 //classes
                 $class = array(
-                    'label' => 'data-label col-md-3',
-                    'data' => 'data col-md-4',
+                    'label' => 'data-label col-md-4',
+                    'data' => 'data col-md-8 pull-left',
                     'row' => 'row',
                 );
                 
@@ -45,11 +45,13 @@ get_header(); ?>
                 </br>  
                 </br>
                 
-                
-                <div class="<?php echo $class[row] ?> pull-left">
-                    <div class="<?php echo $class[data] ?> pull-left"><img src="<?php echo $user_data[profile_pic][0] ?>"></div>
-                </div>        
                 <div class="<?php echo $class[row] ?>">
+                    <div class="gem-profile-img col-md-4">
+                        <img src="<?php echo $user_data[profile_pic][0] ?>">
+                    </div>
+                        
+                
+                <div class="col-md-8">
                     <div class="<?php echo $class[label] ?>">Name: </div>
                     <div class="<?php echo $class[data] ?>"><?php echo $user_data[first_name][0] ?> <?php echo $user_data[last_name][0] ?></div>
                     <div class="<?php echo $class[label] ?>">Store URL: </div>
@@ -59,7 +61,7 @@ get_header(); ?>
                 </div>
                 <div class="<?php echo $class[row] ?>">
                     
-                </div>
+                </div></div>
                        
                           </br>  
                           </br>

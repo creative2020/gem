@@ -14,10 +14,10 @@ Template Name: Homepage
         
             <div class="col-sm-12 col-md-4 slider-info-container">
                 <div class="row">
-                    <a href="/find-a-gem/">
+                    <a href="/shop/">
                         <div class="col-sm-4 col-md-12 slider-info">
-                            <h2>Find a Gem near you</h2>
-                            <p>Shop</p>
+                            <h2>Shop Now</h2>
+                            <p>Get Rocked Out</p>
                         </div>
                     </a>
                     <a href="/host-a-party/"><div class="col-sm-4 col-md-12 slider-info">

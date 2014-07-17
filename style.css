@@ -740,6 +740,16 @@ code {
     padding-top:1.0em;
 }
 
+.gem-profile-img {
+    overflow:hidden;
+}
+.gem-profile-img img{
+    width:100%;
+}
+.gem-profile-info {
+    
+}
+
 /*
 colors
 @brand-primary  #428bca = #a50050 = gem1 - main pink

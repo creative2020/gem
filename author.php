@@ -1,73 +1,47 @@
-<?php
+<?php 
 
-session_start();
+setcookie("gem_test", 'test', time()+3600*24*30, "/", "local.gem.2020creative.net", 0, 0);
+setcookie("gem_test", 'test', time()+3600*24*30, "/", "rockdarling.com", 0, 0);
 
-$_SESSION['gemses'] = 'rd';
+$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+
+
+
+//setcookie("wp_affiliates", $curauth, time()+3600*24*30, "/", "rockdarling.com", 0, 0);
+
+//$auth_meta = get_the_author_meta( $author );
+
+//$store_link = '/?mygem=' . $curauth->display_name . '';
+
+//if (!empty($_COOKIE['wp_affiliates'])) {
+
+//header("Location:  http://local.gem.2020creative.net/harperville/?mygem=harperville");
+    
+//}
+
+//echo('<meta http-equiv="refresh" content="20">');
+
+get_header(); 
+
+$my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : $curauth);
+$my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
 
 ?>
 
 
-<?php get_header(); ?>
 
 <div id="party-header-wrap" class="row">
     <div class="hidden-xs hidden-sm col-md-12">
         
         <?php
             
-//function suGetClientCookiesEnabled() // Test if browser has cookies enabled
-    {
-      // Avoid overhead, if already tested, return it
-      if( defined( 'SU_CLIENT_COOKIES_ENABLED' ))
-       { return SU_CLIENT_COOKIES_ENABLED; }
-
-      $bIni = ini_get( 'session.use_cookies' ); 
-      ini_set( 'session.use_cookies', 1 ); 
-
-      $a = session_id();
-      $bWasStarted = ( is_string( $a ) && strlen( $a ));
-      if( !$bWasStarted )
-      {
-        @session_start();
-        $a = session_id();
-      }
-
-   // Make a copy of current session data
-  $aSesDat = (isset( $_SESSION ))?$_SESSION:array();
-   // Now we destroy the session and we lost the data but not the session id 
-   // when cookies are enabled. We restore the data later. 
-  @session_destroy(); 
-   // Restart it
-  @session_start();
-
-   // Restore copy
-  $_SESSION = $aSesDat;
-
-   // If no cookies are enabled, the session differs from first session start
-  $b = session_id();
-  if( !$bWasStarted )
-   { // If not was started, write data to the session container to avoid data loss
-     @session_write_close(); 
-   }
-
-   // When no cookies are enabled, $a and $b are not the same
-  $b = ($a === $b);
-  define( 'SU_CLIENT_COOKIES_ENABLED', $b );
-
-  if( !$bIni )
-   { @ini_set( 'session.use_cookies', 0 ); }
-
-  //echo $b?'1':'0';
-  return $b;
-    }
-
-
 $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 
 $auth_meta = get_the_author_meta( $author );
 
 $store_link = '"/shop/?mygem=' . $curauth->display_name . '"';
 
-http_redirect( $store_link , array("name" => "value"), true, HTTP_REDIRECT_PERM);
+//http_redirect( $store_link , array("name" => "value"), true, HTTP_REDIRECT_PERM);
 
 
 
@@ -97,44 +71,48 @@ $gem_profile_img = get_field( 'photo' );
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
-        <?php //echo $_SESSION['gem_ses']; ?>
+        rid = <?php echo $my_rep_user_id; ?>
         
-<?php        if( suGetClientCookiesEnabled()) { 
+        <?php //print_r($store_link); ?>
+        
+        <h2>Welcome to my Gem Store, please use the link below to shop my personalized store.</h2>
+        
+        <a class="btn btn-primary btn-lg" href=<?php echo $store_link; ?>>Shop Now</a>
+        
+        <h2>Thank you!</h2>
+        
+        <?php 
+                if ( !empty( $_COOKIE['wp_affiliates'] ) ) {
+                    
+                    $my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : 'Guest');
+                    $my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
+                    $rep = get_userdata( $my_rep_user_id );
+                    $rep_profile = get_user_meta($my_rep_user_id);
+                    $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
+
+                    echo $rep->user_nicename . '\'s Shop'; 
             
+                } else {
+                    
+                    
+    
+                    
+                };
+
+                if ($_COOKIE['gem_test'] == 'test') {
+                    
+                    echo '';
+                    
+                    
+                } else {
+                    
+                    echo '';
+                    
+                }
             
-            
-    echo 'Your browsers cookies are enabled for the full shopping experience, let\'s go...';
-         
-         $_SESSION['gemses'] = $curauth->display_name;
-            
-       $store_link = '"/shop/?mygem=' . $curauth->display_name . '"';        
-    wp_redirect( $store_link );
-    exit; 
-            
-} else { 
-    echo    '<h2>Your browsers cookies are NOT enabled!</h2>',
-            '<p>This shop requires cookies for the shopping cart experience. Please turn on your cookies and refresh this page to get Rockin\'.</p>',
-            '<p>If you have questions about how to enable your browsers cookies, we suggest the following link:</p>',
-            '<h4><a href="https://support.google.com/accounts/answer/61416?hl=en"target="_blank">Google Chrome</a></h4>',
-            '<h4><a href="http://support.apple.com/kb/PH17191" target="_blank">Safari</a></h4>',
-            '<h4><a href="http://windows.microsoft.com/en-us/windows-vista/block-or-allow-cookies" target="_blank">Internet Explorer</a></h4></br>';
-            
-            
-            $_SESSION['gemses'] = $curauth->display_name;
-            $gemses = $curauth->display_name;
-            
-       $store_link = '"/shop/?gemses=' . $gemses .'&mygem=' . $curauth->display_name . '"';        
-    //wp_redirect( $store_link );
-    //exit; 
-            
-            echo '<h2>Once your cookies are enabled, please proceed to shop</h2>',
-                '<a href='. $store_link .'>Shop Now</a>';
-            
-            
-  
-            
-            
-} ?>
+            ?>
+        
+       <?php //echo do_shortcode('[recent_products per_page="12" columns="4"]'); ?>
         
         <?php //print_r($auth_meta); ?>
          
@@ -150,7 +128,7 @@ $gem_profile_img = get_field( 'photo' );
         
         <div id="sidebar" class="col-md-3">
                     
-            			
+            <?php dynamic_sidebar('products-main'); // shop sidebar main ?>			
                         
         </div> <!-- end #sidebar -->
         

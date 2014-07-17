@@ -78,8 +78,7 @@ if($cat_obj)    {
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
-     <?php echo $_SESSION['gemses']; ?>
-        <?php echo $_GET['gemses']; ?>
+     
         
 
 	<?php
