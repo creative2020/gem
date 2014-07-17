@@ -14,7 +14,7 @@ $_SESSION['gemses'] = 'rd';
         
         <?php
             
-function suGetClientCookiesEnabled() // Test if browser has cookies enabled
+//function suGetClientCookiesEnabled() // Test if browser has cookies enabled
     {
       // Avoid overhead, if already tested, return it
       if( defined( 'SU_CLIENT_COOKIES_ENABLED' ))
@@ -65,9 +65,9 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 
 $auth_meta = get_the_author_meta( $author );
 
-//$store_link = '"/shop/?mygem=' . $curauth->display_name . '"';
+$store_link = '"/shop/?mygem=' . $curauth->display_name . '"';
 
-//http_redirect( $store_link , array("name" => "value"), true, HTTP_REDIRECT_PERM);
+http_redirect( $store_link , array("name" => "value"), true, HTTP_REDIRECT_PERM);
 
 
 
@@ -120,7 +120,7 @@ $gem_profile_img = get_field( 'photo' );
             '<h4><a href="http://windows.microsoft.com/en-us/windows-vista/block-or-allow-cookies" target="_blank">Internet Explorer</a></h4></br>';
             
             
-                     $_SESSION['gemses'] = $curauth->display_name;
+            $_SESSION['gemses'] = $curauth->display_name;
             $gemses = $curauth->display_name;
             
        $store_link = '"/shop/?gemses=' . $gemses .'&mygem=' . $curauth->display_name . '"';        
