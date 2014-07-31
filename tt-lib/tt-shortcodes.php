@@ -427,14 +427,14 @@ $party_name = get_the_title( $party_id );
         $rep_thumb = '<div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>';
     };
     
-    //print_r($_COOKIE);
+   //echo 'print: '. print_r($rep);
     
     return 
         '<div class="gem-rep-wrap">'.
              $rep_thumb .
             '<div class="gem-name">' . $rep->first_name . ' ' . $rep->last_name . ' ID# ' .$my_rep_id . '</div></br>' .
             '<div class="rep_phone">Phone: ' . $rep_profile[phone][0] . '</div>' .  
-            '<div class="rep_email"><a href="#">Email me</a></div>'.
+            '<div class="rep_email"><a href="/help-and-support/email-your-gem/?gememail=' . $rep->user_email . '&gemfname=' . $rep->first_name . '&gemlname=' . $rep->last_name . '">Email me</a></div>'.
         '</div>'.
             '<div class="party-id">Party: ' . $party_name .'</div>';
         
