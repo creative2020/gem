@@ -108,7 +108,7 @@ add_action('admin_print_footer_scripts', 'tt_print_acf');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom fields
 
-//add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
+add_action('woocommerce_checkout_update_order_meta', 'my_custom_checkout_field_update_order_meta');
 
 function my_custom_checkout_field_update_order_meta( $order_id ) {
     
