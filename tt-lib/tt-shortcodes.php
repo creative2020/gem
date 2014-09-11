@@ -421,7 +421,15 @@ $rep_profile = get_user_meta($my_rep_user_id);
 $rep_photo = wp_get_attachment_image_src( $rep_profile[photo][0], thumbnail );
     
 $party_id = $_COOKIE['gem_party'];
-$party_name = get_the_title( $party_id );
+
+    if (!empty($_COOKIE['gem_party'])) {
+    
+        $party_name = get_the_title( $party_id );
+        
+    } else {
+        
+        $party_name = 'no party selected';
+    }
     
     if (!empty($rep_photo)) {
         $rep_thumb = '<div class="gem-rep-tn pull-left"><img src="' . $rep_photo[0] . '" width="100px"></div>';

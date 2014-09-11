@@ -71,6 +71,8 @@ $gem_profile_img = get_field( 'photo' );
     
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
+        <?php wp_bootstrap_main_nav(); // Adjust using Menus in Wordpress Admin ?>
+        
         rid = <?php echo $my_rep_user_id; ?>
         
         <?php //print_r($store_link); ?>
