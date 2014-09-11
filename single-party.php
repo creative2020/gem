@@ -5,7 +5,26 @@ $party_id = get_the_ID();
 //setcookie("gem_party", $party_id, time()+3600*24*30, "/", "dev.rockdarling.com", 0, 0);
 setcookie("gem_party", $party_id, time()+3600*24*30, "/", "rockdarling.com", 0, 0);
 
-get_header(); ?>
+get_header();
+
+//$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
+
+$party_info = get_post($party_id); 
+ 
+
+$my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : $curauth);
+$my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
+
+print_r($party_info);
+//echo $party_info->post_author;
+
+$user = get_userdata( $party_info->post_author );
+
+$store_link = '/shop/?mygem=' . $user->user_nicename . '';
+
+//print_r($user);
+
+?>
 
 <div id="party-header-wrap" class="row">
     <div class="hidden-xs hidden-sm col-md-12">
@@ -98,7 +117,13 @@ if ($party_active == 'n') {
 }
 if ($party_active == 'y') {
     
-    echo do_shortcode('[recent_products per_page="12" columns="4"]');
+    //echo do_shortcode('[recent_products per_page="12" columns="4"]');
+    
+    echo '<h2>Welcome to my party, please use the link below to shop.</h2>',
+        
+        '<a class="btn btn-primary btn-lg" href='. $store_link .'>Shop Now</a>',
+        
+        '<h2>Thank you!</h2>';
     
 }
 

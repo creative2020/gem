@@ -115,8 +115,23 @@ function my_custom_checkout_field_update_order_meta( $order_id ) {
     $gpi = $_COOKIE['gem_party'];
     $gri = $_COOKIE['wp_affiliates'];
     
+    $party_info = get_post($gpi); 
+    $user = get_userdata( $party_info->post_author );
+    
+    //$my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : $curauth);
+    $my_rep_user_id = affiliates_get_affiliate_user($gri);
+    
+    //print_r($party_info);
+    //echo $party_info->post_author;
+    
+    $user = get_userdata( $my_rep_user_id );
+    
+    //print_r($user);
+    
 update_post_meta( $order_id, 'gem_party_id', $gpi);
 update_post_meta( $order_id, 'gem_rep_id', $gri);
+update_post_meta( $order_id, 'gem_party_name', $party_info->post_title);
+update_post_meta( $order_id, 'gem_rep_name', $user->user_nicename);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////// woocommerce custom fields on order edit page
@@ -125,7 +140,9 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'my_custom_che
  
 function my_custom_checkout_field_display_admin_order_meta($order){
     echo '<p><strong>'.__('Gem Party ID').':</strong> ' . get_post_meta( $order->id, 'gem_party_id', true ) . '</p>';
+    echo '<p><strong>'.__('Gem Party Name').':</strong> ' . get_post_meta( $order->id, 'gem_party_name', true ) . '</p>';
     echo '<p><strong>'.__('Gem Rep ID').':</strong> ' . get_post_meta( $order->id, 'gem_rep_id', true ) . '</p>';
+    echo '<p><strong>'.__('Gem Rep Name').':</strong> ' . get_post_meta( $order->id, 'gem_rep_name', true ) . '</p>';
 }
 ////////////////////////////////////////////////////////
 
