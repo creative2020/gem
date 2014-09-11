@@ -15,7 +15,7 @@ $party_info = get_post($party_id);
 $my_rep_id =  ($_COOKIE['wp_affiliates']!='' ? $_COOKIE['wp_affiliates'] : $curauth);
 $my_rep_user_id = affiliates_get_affiliate_user($my_rep_id);
 
-print_r($party_info);
+//print_r($party_info);
 //echo $party_info->post_author;
 
 $user = get_userdata( $party_info->post_author );
