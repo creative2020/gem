@@ -90,7 +90,7 @@ function wp_bootstrap_main_nav() {
     wp_nav_menu( 
     	array( 
     		'menu' => 'main_nav', /* menu name */
-    		'menu_class' => 'nav navbar-nav',
+    		'menu_class' => 'nav navbar-nav main-nav',
     		'theme_location' => 'main_nav', /* where in the theme it's assigned */
     		'container' => 'false', /* container class */
     		'fallback_cb' => 'wp_bootstrap_main_nav_fallback', /* menu fallback */

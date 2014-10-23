@@ -72,10 +72,13 @@ if($cat_obj)    {
 
 <div id="page-wrap" class="row">
     
-    <div class="col-md-12">
+    <div class="row store">
+        <div id="store-menu" class="col-sm-10 col-sm-offset-1">  
+            <?php get_template_part( 'section', 'store-menu' ); ?>
+        </div>
+    </div>
         
-        
-    
+    <div class="row">
     <div id="page-left" class="col-md-7 col-md-offset-1">
         
      

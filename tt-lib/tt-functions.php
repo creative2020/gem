@@ -19,6 +19,9 @@ require_once ('tt-shortcodes.php');
 // CPT's
 require_once ('tt-cpt.php');
 
+// Bootstrap Nav
+require_once ('plugins/wp_bootstrap_navwalker.php');
+
 //////////////////////////////////////////////////////// Menus
 
 register_nav_menus( array(
@@ -27,6 +30,7 @@ register_nav_menus( array(
 	'section_links_3' => 'Section Links 3',
 	'section_links_4' => 'Section Links 4',
     'social_media' => 'Social Media',
+    'store' => 'Store',
 ) );
 
 
